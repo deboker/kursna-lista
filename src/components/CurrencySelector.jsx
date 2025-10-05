@@ -19,6 +19,7 @@ function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults })
           <option value="CHF">CHF - Švajcarski franak</option>
           <option value="AUD">AUD - Australijski dolar</option>
           <option value="CAD">CAD - Kanadski dolar</option>
+          <option value="BAM">BAM - Konvertibilna marka</option>
         </select>
         <button onClick={onShowResults} className="show-results-btn">
           Prikaži rezultat

@@ -20,10 +20,12 @@ const currencyNames = {
 };
 
 function ExchangeRateTable({ exchangeRates, selectedCurrency }) {
-  // Filter for selected currency
-  const filteredRates = selectedCurrency
-    ? exchangeRates.filter(rate => rate.currency === selectedCurrency)
-    : exchangeRates;
+  // Filter for selected currency and exclude zero rates
+  const filteredRates = exchangeRates.filter(rate => {
+    const matchesCurrency = selectedCurrency ? rate.currency === selectedCurrency : true;
+    const hasValidRate = parseFloat(rate.buyingRate) > 0 && parseFloat(rate.sellingRate) > 0;
+    return matchesCurrency && hasValidRate;
+  });
 
   return (
     <div className="exchange-rate-table">
