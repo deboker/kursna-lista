@@ -12,6 +12,7 @@ function App() {
   const [bancaIntesaRates, setBancaIntesaRates] = useState([]);
   const [addikoBankRates, setAddikoBankRates] = useState([]);
   const [adriaticBankRates, setAdriaticBankRates] = useState([]);
+  const [altaBankaRates, setAltaBankaRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,7 +38,8 @@ function App() {
           fetchBank("/.netlify/functions/aik-banka", setAikBankaRates, "AIK Banka"),
           fetchBank("/.netlify/functions/banca-intesa", setBancaIntesaRates, "Banca Intesa"),
           fetchBank("/.netlify/functions/addiko-bank", setAddikoBankRates, "Addiko Bank"),
-          fetchBank("/.netlify/functions/adriatic-bank", setAdriaticBankRates, "Adriatic Bank")
+          fetchBank("/.netlify/functions/adriatic-bank", setAdriaticBankRates, "Adriatic Bank"),
+          fetchBank("/.netlify/functions/alta-banka", setAltaBankaRates, "Alta Banka")
         ]);
 
         setLoading(false);
@@ -129,6 +131,12 @@ function App() {
             exchangeRates={adriaticBankRates}
             selectedCurrency={selectedCurrency}
           />
+
+          <h2 className="bank-name" style={{marginTop: "40px"}}>Alta Banka</h2>
+          <ExchangeRateTable
+            exchangeRates={altaBankaRates}
+            selectedCurrency={selectedCurrency}
+          />
                 </>
               )}
             </>
@@ -144,7 +152,8 @@ function App() {
                 "AIK Banka": aikBankaRates,
                 "Banca Intesa": bancaIntesaRates,
                 "Addiko Bank": addikoBankRates,
-                "Adriatic Bank": adriaticBankRates
+                "Adriatic Bank": adriaticBankRates,
+                "Alta Banka": altaBankaRates
               }}
             />
           )}
