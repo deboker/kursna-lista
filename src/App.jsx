@@ -64,21 +64,15 @@ function App() {
   return (
     <div className="app">
       <div className="background-overlay">
-        <div className="background-gradient"></div>
         <div
           className="bg-image"
           style={{
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
           }}
         ></div>
+        <div className="background-gradient"></div>
       </div>
       <h1>Exchange Rate Tracker</h1>
       <CurrencySelector
