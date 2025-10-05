@@ -92,11 +92,15 @@ function App() {
           {exchangeRates[0].date && (
             <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
           )}
+
           <h2 className="bank-name">Narodna Banka Srbije</h2>
           <ExchangeRateTable
             exchangeRates={exchangeRates}
             selectedCurrency={selectedCurrency}
           />
+
+          <h2 className="bank-name" style={{marginTop: "40px"}}>AIK Banka</h2>
+          <p className="coming-soon">Uskoro dostupno</p>
         </>
       ) : null}
     </div>

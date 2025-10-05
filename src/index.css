@@ -115,6 +115,13 @@ h1 {
   margin: 20px 0 10px 0;
 }
 
+.coming-soon {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  margin: 10px 0 20px 0;
+}
+
 .exchange-rate-table {
   :is(table) {
     width: 100%;
