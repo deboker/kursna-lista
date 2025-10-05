@@ -3,6 +3,7 @@ import axios from "axios";
 import CurrencySelector from "./components/CurrencySelector";
 import ExchangeRateTable from "./components/ExchangeRateTable";
 import "./index.css";
+import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
