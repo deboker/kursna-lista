@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/.netlify/functions/scrape');
+        const response = await axios.get("/.netlify/functions/scrape");
 
         if (response.status === 200) {
           setExchangeRates(response.data);
@@ -29,9 +29,24 @@ function App() {
         console.error("Fetch error:", err);
         // Fallback to mock data if API fails
         const mockData = [
-          { bank: "AIK Banka", currency: "EUR", buyingRate: "117.00", sellingRate: "118.00" },
-          { bank: "AIK Banka", currency: "USD", buyingRate: "106.50", sellingRate: "107.50" },
-          { bank: "AIK Banka", currency: "GBP", buyingRate: "135.00", sellingRate: "136.50" },
+          {
+            bank: "AIK Banka",
+            currency: "EUR",
+            buyingRate: "117.00",
+            sellingRate: "118.00",
+          },
+          {
+            bank: "AIK Banka",
+            currency: "USD",
+            buyingRate: "106.50",
+            sellingRate: "107.50",
+          },
+          {
+            bank: "AIK Banka",
+            currency: "GBP",
+            buyingRate: "135.00",
+            sellingRate: "136.50",
+          },
         ];
         setExchangeRates(mockData);
         setLoading(false);
@@ -52,15 +67,15 @@ function App() {
         <div
           className="bg-image"
           style={{
-            backgroundImage: 'url("cd260a30-11d9-4634-bb33-ab81da4094c0")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            position: 'absolute',
+            backgroundImage: 'url("cd260a30-11d9-4634-bb33-ab81da4094c0.jpg")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            position: "absolute",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: -1
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
           }}
         ></div>
       </div>
