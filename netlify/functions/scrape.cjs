@@ -5,22 +5,22 @@ exports.handler = async function(event, context) {
     // Fetch all current exchange rates from NBS via Kurs API
     const response = await axios.get('https://kurs.resenje.org/api/v1/rates/today');
 
-    if (response.status === 200 && response.data) {
-      const rates = response.data;
+    if (response.status === 200 && response.data && response.data.rates) {
+      const rates = response.data.rates;
       const exchangeRates = [];
 
       // Convert API response to our format
-      for (const [currency, data] of Object.entries(rates)) {
-        if (data && data.middle) {
+      rates.forEach(rate => {
+        if (rate.code && rate.exchange_middle) {
           exchangeRates.push({
             bank: "Narodna Banka Srbije",
-            currency: currency.toUpperCase(),
-            buyingRate: data.middle.toFixed(4),
-            sellingRate: data.middle.toFixed(4),
-            date: data.date || new Date().toISOString().split('T')[0]
+            currency: rate.code.toUpperCase(),
+            buyingRate: rate.exchange_buy ? rate.exchange_buy.toFixed(4) : rate.exchange_middle.toFixed(4),
+            sellingRate: rate.exchange_sell ? rate.exchange_sell.toFixed(4) : rate.exchange_middle.toFixed(4),
+            date: rate.date
           });
         }
-      }
+      });
 
       return {
         statusCode: 200,
