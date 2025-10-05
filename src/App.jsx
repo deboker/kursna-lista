@@ -74,24 +74,28 @@ function App() {
         <div className="background-gradient"></div>
       </div>
       <h1>Kursna Lista</h1>
-      <CurrencySelector
-        selectedCurrency={selectedCurrency}
-        onCurrencyChange={handleCurrencyChange}
-        onShowResults={handleShowResults}
-      />
-      {loading ? (
-        <p>Učitavanje...</p>
-      ) : error ? (
-        <p>Greška: {error}</p>
-      ) : (
-        <>
-          {/* Currency Converter */}
-          {exchangeRates.length > 0 && (
-            <CurrencyConverter allRates={exchangeRates} />
-          )}
 
-          {showResults && exchangeRates.length > 0 && (
+      <div className="app-container">
+        {/* Left Sidebar - Ads */}
+        <div className="left-sidebar">
+          <h3>Reklamni prostor</h3>
+        </div>
+
+        {/* Main Content */}
+        <div className="main-content">
+          <CurrencySelector
+            selectedCurrency={selectedCurrency}
+            onCurrencyChange={handleCurrencyChange}
+            onShowResults={handleShowResults}
+          />
+          {loading ? (
+            <p>Učitavanje...</p>
+          ) : error ? (
+            <p>Greška: {error}</p>
+          ) : (
             <>
+              {showResults && exchangeRates.length > 0 && (
+                <>
               {exchangeRates[0].date && (
                 <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
               )}
@@ -125,10 +129,19 @@ function App() {
             exchangeRates={adriaticBankRates}
             selectedCurrency={selectedCurrency}
           />
+                </>
+              )}
             </>
           )}
-        </>
-      )}
+        </div>
+
+        {/* Right Sidebar - Calculator */}
+        <div className="right-sidebar">
+          {exchangeRates.length > 0 && (
+            <CurrencyConverter allRates={exchangeRates} />
+          )}
+        </div>
+      </div>
     </div>
   );
 }
