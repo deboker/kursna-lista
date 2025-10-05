@@ -8,6 +8,7 @@ import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [aikBankaRates, setAikBankaRates] = useState([]);
+  const [bancaIntesaRates, setBancaIntesaRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,6 +27,12 @@ function App() {
         const aikResponse = await axios.get("/.netlify/functions/aik-banka");
         if (aikResponse.status === 200) {
           setAikBankaRates(aikResponse.data);
+        }
+
+        // Fetch Banca Intesa rates
+        const intesaResponse = await axios.get("/.netlify/functions/banca-intesa");
+        if (intesaResponse.status === 200) {
+          setBancaIntesaRates(intesaResponse.data);
         }
 
         setLoading(false);
@@ -86,6 +93,12 @@ function App() {
           <h2 className="bank-name" style={{marginTop: "40px"}}>AIK Banka</h2>
           <ExchangeRateTable
             exchangeRates={aikBankaRates}
+            selectedCurrency={selectedCurrency}
+          />
+
+          <h2 className="bank-name" style={{marginTop: "40px"}}>Banca Intesa</h2>
+          <ExchangeRateTable
+            exchangeRates={bancaIntesaRates}
             selectedCurrency={selectedCurrency}
           />
         </>
