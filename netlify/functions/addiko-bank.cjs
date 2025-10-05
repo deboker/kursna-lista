@@ -16,13 +16,15 @@ exports.handler = async function(event, context) {
       const dateMatch = dateText.match(/(\d{2}\.\d{2}\.\d{4})/);
       const date = dateMatch ? dateMatch[1].split('.').reverse().join('-') : new Date().toISOString().split('T')[0];
 
-      // Parse table rows
+      // Parse table rows - skip header rows (0, 1)
       $('table tr').each((index, element) => {
         const cells = $(element).find('td');
-        if (cells.length >= 8) {
-          const currency = $(cells[3]).text().trim();
-          const buyingRate = $(cells[5]).text().trim().replace(',', '.');
-          const sellingRate = $(cells[7]).text().trim().replace(',', '.');
+
+        // Data rows have 7 cells: Valuta, Naziv zemlje, Šifra valute, Važi za, Kupovni, Srednji, Prodajni
+        if (cells.length === 7 && index > 1) {
+          const currency = $(cells[0]).text().trim(); // EUR, USD, etc
+          const buyingRate = $(cells[4]).text().trim().replace(',', '.'); // Kupovni
+          const sellingRate = $(cells[6]).text().trim().replace(',', '.'); // Prodajni
 
           if (currency && buyingRate && sellingRate && parseFloat(buyingRate) > 0) {
             exchangeRates.push({
