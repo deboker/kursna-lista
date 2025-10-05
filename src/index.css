@@ -1,0 +1,95 @@
+/* App.css */
+/* Add this to your existing or a new CSS file */
+.background-overlay {
+  position: relative;
+}
+
+.background-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.currency-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  :is(select) {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  span {
+    font-size: 16px;
+  }
+}
+
+.exchange-rate-table {
+  :is(table) {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  :is(th),
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  :is(th) {
+    background-color: #f2f2f2;
+  }
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+
+  .currency-selector {
+    flex-direction: column;
+
+    :is(select) {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    :is(span) {
+      margin-top: 10px;
+    }
+  }
+}
