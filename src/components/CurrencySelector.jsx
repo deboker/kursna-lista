@@ -1,41 +1,24 @@
 import React from "react";
 
-function CurrencySelector({ selectedCurrencyPair, onCurrencyChange, onShowResults }) {
+function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults }) {
   const handleCurrencyChange = (e) => {
-    const { name, value } = e.target;
-    onCurrencyChange(name, value);
+    onCurrencyChange(e.target.value);
   };
 
   return (
     <div className="currency-selector">
-      <label>Izaberite valutni par:</label>
+      <label>Izaberite valutu:</label>
       <div className="selector-controls">
         <select
-          name="from"
-          value={selectedCurrencyPair.from}
+          value={selectedCurrency}
           onChange={handleCurrencyChange}
         >
-          <option value="RSD">RSD</option>
-          <option value="EUR">EUR</option>
-          <option value="USD">USD</option>
-          <option value="GBP">GBP</option>
-          <option value="CHF">CHF</option>
-          <option value="AUD">AUD</option>
-          <option value="CAD">CAD</option>
-        </select>
-        <span>u</span>
-        <select
-          name="to"
-          value={selectedCurrencyPair.to}
-          onChange={handleCurrencyChange}
-        >
-          <option value="EUR">EUR</option>
-          <option value="RSD">RSD</option>
-          <option value="USD">USD</option>
-          <option value="GBP">GBP</option>
-          <option value="CHF">CHF</option>
-          <option value="AUD">AUD</option>
-          <option value="CAD">CAD</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="USD">USD - Američki dolar</option>
+          <option value="GBP">GBP - Funta Sterlinga</option>
+          <option value="CHF">CHF - Švajcarski franak</option>
+          <option value="AUD">AUD - Australijski dolar</option>
+          <option value="CAD">CAD - Kanadski dolar</option>
         </select>
         <button onClick={onShowResults} className="show-results-btn">
           Prikaži rezultat

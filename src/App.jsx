@@ -7,10 +7,7 @@ import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
-  const [selectedCurrencyPair, setSelectedCurrencyPair] = useState({
-    from: "RSD",
-    to: "EUR",
-  });
+  const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showResults, setShowResults] = useState(false);
@@ -56,10 +53,11 @@ function App() {
     };
 
     fetchData();
-  }, [selectedCurrencyPair]);
+  }, []);
 
-  const handleCurrencyChange = (name, value) => {
-    setSelectedCurrencyPair(prev => ({ ...prev, [name]: value }));
+  const handleCurrencyChange = (value) => {
+    setSelectedCurrency(value);
+    setShowResults(false); // Reset results when currency changes
   };
 
   const handleShowResults = () => {
@@ -81,23 +79,23 @@ function App() {
       </div>
       <h1>Kursna Lista</h1>
       <CurrencySelector
-        selectedCurrencyPair={selectedCurrencyPair}
+        selectedCurrency={selectedCurrency}
         onCurrencyChange={handleCurrencyChange}
         onShowResults={handleShowResults}
       />
-      {exchangeRates.length > 0 && exchangeRates[0].date && (
-        <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
-      )}
       {loading ? (
         <p>Učitavanje...</p>
       ) : error ? (
         <p>Greška: {error}</p>
-      ) : showResults ? (
+      ) : showResults && exchangeRates.length > 0 ? (
         <>
+          {exchangeRates[0].date && (
+            <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
+          )}
           <h2 className="bank-name">Narodna Banka Srbije</h2>
           <ExchangeRateTable
             exchangeRates={exchangeRates}
-            selectedCurrency={selectedCurrencyPair.from === "RSD" ? selectedCurrencyPair.to : selectedCurrencyPair.from}
+            selectedCurrency={selectedCurrency}
           />
         </>
       ) : null}
