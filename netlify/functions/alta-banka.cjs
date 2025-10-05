@@ -4,20 +4,18 @@
 
 exports.handler = async function(event, context) {
   try {
-    // Mock data with current rates (as of 2025-10-05)
+    // Mock data with current rates (as of 2025-10-03)
     const exchangeRates = [
-      { bank: "Alta Banka", currency: "EUR", buyingRate: "116.5800", sellingRate: "118.9200", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "USD", buyingRate: "98.5400", sellingRate: "100.5400", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "GBP", buyingRate: "128.6100", sellingRate: "131.1700", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "CHF", buyingRate: "120.1600", sellingRate: "122.5600", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "AUD", buyingRate: "66.5600", sellingRate: "67.8600", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "CAD", buyingRate: "68.6000", sellingRate: "69.9600", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "SEK", buyingRate: "10.7300", sellingRate: "10.9500", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "DKK", buyingRate: "15.8300", sellingRate: "16.1500", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "NOK", buyingRate: "10.1000", sellingRate: "10.3000", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "JPY", buyingRate: "68.2900", sellingRate: "69.6900", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "CNY", buyingRate: "13.4200", sellingRate: "16.4000", date: "2025-10-05" },
-      { bank: "Alta Banka", currency: "RUB", buyingRate: "0.8200", sellingRate: "1.5300", date: "2025-10-05" },
+      { bank: "Alta Banka", currency: "EUR", buyingRate: "114.9359", sellingRate: "119.3764", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "USD", buyingRate: "97.9766", sellingRate: "102.5755", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "GBP", buyingRate: "129.5683", sellingRate: "138.9671", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "CHF", buyingRate: "121.5218", sellingRate: "129.0386", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "AUD", buyingRate: "63.5783", sellingRate: "68.1903", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "CAD", buyingRate: "69.0536", sellingRate: "74.0626", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "SEK", buyingRate: "10.2563", sellingRate: "11.0003", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "NOK", buyingRate: "9.6541", sellingRate: "10.3545", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "CNY", buyingRate: "12.6350", sellingRate: "15.4428", date: "2025-10-03" },
+      { bank: "Alta Banka", currency: "RUB", buyingRate: "0.8476", sellingRate: "1.5740", date: "2025-10-03" },
     ];
 
     return {
