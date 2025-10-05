@@ -13,6 +13,7 @@ function App() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,8 +58,12 @@ function App() {
     fetchData();
   }, [selectedCurrencyPair]);
 
-  const handleCurrencyChange = (from, to) => {
-    setSelectedCurrencyPair({ from, to });
+  const handleCurrencyChange = (name, value) => {
+    setSelectedCurrencyPair(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleShowResults = () => {
+    setShowResults(true);
   };
 
   return (
@@ -78,6 +83,7 @@ function App() {
       <CurrencySelector
         selectedCurrencyPair={selectedCurrencyPair}
         onCurrencyChange={handleCurrencyChange}
+        onShowResults={handleShowResults}
       />
       {exchangeRates.length > 0 && exchangeRates[0].date && (
         <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
@@ -86,9 +92,15 @@ function App() {
         <p>Učitavanje...</p>
       ) : error ? (
         <p>Greška: {error}</p>
-      ) : (
-        <ExchangeRateTable exchangeRates={exchangeRates} />
-      )}
+      ) : showResults ? (
+        <>
+          <h2 className="bank-name">Narodna Banka Srbije</h2>
+          <ExchangeRateTable
+            exchangeRates={exchangeRates}
+            selectedCurrency={selectedCurrencyPair.from === "RSD" ? selectedCurrencyPair.to : selectedCurrencyPair.from}
+          />
+        </>
+      ) : null}
     </div>
   );
 }

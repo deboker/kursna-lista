@@ -68,21 +68,51 @@ h1 {
 
 .currency-selector {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+}
 
-  :is(select) {
-    padding: 10px;
-    margin: 0 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.selector-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
 
-  span {
-    font-size: 16px;
-  }
+.currency-selector select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.currency-selector span {
+  font-size: 16px;
+  color: #f2f2f2;
+}
+
+.show-results-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.show-results-btn:hover {
+  background-color: #45a049;
+}
+
+.bank-name {
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 18px;
+  margin: 20px 0 10px 0;
 }
 
 .exchange-rate-table {
