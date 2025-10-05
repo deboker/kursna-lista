@@ -74,15 +74,18 @@ function App() {
         ></div>
         <div className="background-gradient"></div>
       </div>
-      <h1>Exchange Rate Tracker</h1>
+      <h1>Kursna Lista</h1>
       <CurrencySelector
         selectedCurrencyPair={selectedCurrencyPair}
         onCurrencyChange={handleCurrencyChange}
       />
+      {exchangeRates.length > 0 && exchangeRates[0].date && (
+        <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
+      )}
       {loading ? (
-        <p>Loading...</p>
+        <p>Učitavanje...</p>
       ) : error ? (
-        <p>Error: {error}</p>
+        <p>Greška: {error}</p>
       ) : (
         <ExchangeRateTable exchangeRates={exchangeRates} />
       )}

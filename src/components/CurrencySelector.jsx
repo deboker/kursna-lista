@@ -8,7 +8,7 @@ function CurrencySelector({ selectedCurrencyPair, onCurrencyChange }) {
 
   return (
     <div className="currency-selector">
-      <label>Select Currency Pair:</label>
+      <label>Izaberite valutni par:</label>
       <select
         name="from"
         value={selectedCurrencyPair.from}
@@ -19,7 +19,7 @@ function CurrencySelector({ selectedCurrencyPair, onCurrencyChange }) {
         <option value="USD">USD</option>
         <option value="GBP">GBP</option>
       </select>
-      <span>to</span>
+      <span>u</span>
       <select
         name="to"
         value={selectedCurrencyPair.to}
