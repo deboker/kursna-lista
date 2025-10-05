@@ -50,36 +50,19 @@ function App() {
       <div className="background-overlay">
         <div className="background-gradient"></div>
         <div
-          data-poster-url="https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-poster-00001.jpg"
-          data-video-urls="https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-transcode.mp4,https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-transcode.webm"
-          data-autoplay="true"
-          data-loop="true"
-          data-wf-ignore="true"
-          className="bg-video w-background-video w-background-video-atom"
-        >
-          <video
-            id="05d6b23a-8463-b77b-0381-9e250e423f2b-video"
-            autoPlay
-            loop
-            style={{
-              backgroundImage:
-                'url("https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-poster-00001.jpg")',
-            }}
-            muted
-            playsInline
-            data-wf-ignore="true"
-            data-object-fit="cover"
-          >
-            <source
-              src="https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-transcode.mp4"
-              data-wf-ignore="true"
-            />
-            <source
-              src="https://uploads-ssl.webflow.com/61c05bcae017fc41529392f2/61f90728e329c6ff2d9553dd_pexels-pavel-danilyuk-5495790 (1)-transcode.webm"
-              data-wf-ignore="true"
-            />
-          </video>
-        </div>
+          className="bg-image"
+          style={{
+            backgroundImage: 'url("cd260a30-11d9-4634-bb33-ab81da4094c0")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: -1
+          }}
+        ></div>
       </div>
       <h1>Exchange Rate Tracker</h1>
       <CurrencySelector
