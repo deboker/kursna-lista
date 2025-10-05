@@ -23,8 +23,8 @@ exports.handler = async function(event, context) {
         // Data rows have 7 cells: Valuta, Naziv zemlje, Šifra valute, Važi za, Kupovni, Srednji, Prodajni
         if (cells.length === 7 && index > 1) {
           const currency = $(cells[0]).text().trim(); // EUR, USD, etc
-          const buyingRate = $(cells[4]).text().trim().replace(',', '.'); // Kupovni
-          const sellingRate = $(cells[6]).text().trim().replace(',', '.'); // Prodajni
+          const buyingRate = parseFloat($(cells[4]).text().trim().replace(',', '.')).toFixed(4); // Kupovni
+          const sellingRate = parseFloat($(cells[6]).text().trim().replace(',', '.')).toFixed(4); // Prodajni
 
           if (currency && buyingRate && sellingRate && parseFloat(buyingRate) > 0) {
             exchangeRates.push({
