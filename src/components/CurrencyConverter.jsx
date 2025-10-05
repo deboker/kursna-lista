@@ -5,6 +5,7 @@ function CurrencyConverter({ allBankRates }) {
   const [fromCurrency, setFromCurrency] = useState("EUR");
   const [toCurrency, setToCurrency] = useState("RSD");
   const [selectedBank, setSelectedBank] = useState("Narodna Banka Srbije");
+  const [rateType, setRateType] = useState("srednji");
   const [result, setResult] = useState(null);
 
   // Get available banks
@@ -15,6 +16,17 @@ function CurrencyConverter({ allBankRates }) {
 
   // Get unique currencies from selected bank
   const currencies = ["RSD", ...new Set(selectedRates.map(rate => rate.currency))].sort();
+
+  // Helper function to get the rate based on selected type
+  const getRate = (rateData) => {
+    if (rateType === "kupovni") {
+      return parseFloat(rateData.buyingRate);
+    } else if (rateType === "prodajni") {
+      return parseFloat(rateData.sellingRate);
+    } else { // srednji
+      return (parseFloat(rateData.buyingRate) + parseFloat(rateData.sellingRate)) / 2;
+    }
+  };
 
   const handleConvert = () => {
     if (!amount || isNaN(amount) || amount <= 0) {
@@ -28,8 +40,8 @@ function CurrencyConverter({ allBankRates }) {
     if (fromCurrency === "RSD" && toCurrency !== "RSD") {
       const targetRate = selectedRates.find(r => r.currency === toCurrency);
       if (targetRate) {
-        const middleRate = (parseFloat(targetRate.buyingRate) + parseFloat(targetRate.sellingRate)) / 2;
-        const converted = numAmount / middleRate;
+        const rate = getRate(targetRate);
+        const converted = numAmount / rate;
         setResult(converted.toFixed(2));
       }
     }
@@ -37,8 +49,8 @@ function CurrencyConverter({ allBankRates }) {
     else if (fromCurrency !== "RSD" && toCurrency === "RSD") {
       const sourceRate = selectedRates.find(r => r.currency === fromCurrency);
       if (sourceRate) {
-        const middleRate = (parseFloat(sourceRate.buyingRate) + parseFloat(sourceRate.sellingRate)) / 2;
-        const converted = numAmount * middleRate;
+        const rate = getRate(sourceRate);
+        const converted = numAmount * rate;
         setResult(converted.toFixed(2));
       }
     }
@@ -47,10 +59,10 @@ function CurrencyConverter({ allBankRates }) {
       const sourceRate = selectedRates.find(r => r.currency === fromCurrency);
       const targetRate = selectedRates.find(r => r.currency === toCurrency);
       if (sourceRate && targetRate) {
-        const sourceMiddle = (parseFloat(sourceRate.buyingRate) + parseFloat(sourceRate.sellingRate)) / 2;
-        const targetMiddle = (parseFloat(targetRate.buyingRate) + parseFloat(targetRate.sellingRate)) / 2;
-        const inRSD = numAmount * sourceMiddle;
-        const converted = inRSD / targetMiddle;
+        const sourceRateValue = getRate(sourceRate);
+        const targetRateValue = getRate(targetRate);
+        const inRSD = numAmount * sourceRateValue;
+        const converted = inRSD / targetRateValue;
         setResult(converted.toFixed(2));
       }
     }
@@ -70,6 +82,15 @@ function CurrencyConverter({ allBankRates }) {
             {banks.map(bank => (
               <option key={bank} value={bank}>{bank}</option>
             ))}
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>Tip kursa:</label>
+          <select value={rateType} onChange={(e) => setRateType(e.target.value)}>
+            <option value="kupovni">Kupovni kurs</option>
+            <option value="srednji">Srednji kurs</option>
+            <option value="prodajni">Prodajni kurs</option>
           </select>
         </div>
 
@@ -115,7 +136,7 @@ function CurrencyConverter({ allBankRates }) {
         )}
 
         <p className="converter-note">
-          Napomena: Pri konverziji se koriste srednji kursevi za date valute i nije uračunata provizija Banke na prodaju efektive.
+          Napomena: Pri konverziji se koriste {rateType} kursevi za date valute{rateType === "srednji" ? " i nije uračunata provizija Banke na prodaju efektive" : ""}.
         </p>
       </div>
     </div>
