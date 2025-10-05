@@ -12,7 +12,7 @@ function ExchangeRateTable({ exchangeRates }) {
         <thead>
           <tr>
             <th>Bank</th>
-            <th>Exchange Rate</th>
+            <th>Exchange - Rate</th>
           </tr>
         </thead>
         <tbody>
