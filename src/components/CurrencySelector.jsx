@@ -14,7 +14,10 @@ function CurrencySelector({ selectedCurrencyPair, onCurrencyChange }) {
         value={selectedCurrencyPair.from}
         onChange={handleCurrencyChange}
       >
-        {/* Add options for different currencies */}
+        <option value="RSD">RSD</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
       </select>
       <span>to</span>
       <select
@@ -22,7 +25,10 @@ function CurrencySelector({ selectedCurrencyPair, onCurrencyChange }) {
         value={selectedCurrencyPair.to}
         onChange={handleCurrencyChange}
       >
-        {/* Add options for different currencies */}
+        <option value="EUR">EUR</option>
+        <option value="RSD">RSD</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
       </select>
     </div>
   );
