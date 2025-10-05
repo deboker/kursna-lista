@@ -9,6 +9,7 @@ function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [aikBankaRates, setAikBankaRates] = useState([]);
   const [bancaIntesaRates, setBancaIntesaRates] = useState([]);
+  const [addikoBankRates, setAddikoBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,6 +34,12 @@ function App() {
         const intesaResponse = await axios.get("/.netlify/functions/banca-intesa");
         if (intesaResponse.status === 200) {
           setBancaIntesaRates(intesaResponse.data);
+        }
+
+        // Fetch Addiko Bank rates
+        const addikoResponse = await axios.get("/.netlify/functions/addiko-bank");
+        if (addikoResponse.status === 200) {
+          setAddikoBankRates(addikoResponse.data);
         }
 
         setLoading(false);
@@ -99,6 +106,12 @@ function App() {
           <h2 className="bank-name" style={{marginTop: "40px"}}>Banca Intesa</h2>
           <ExchangeRateTable
             exchangeRates={bancaIntesaRates}
+            selectedCurrency={selectedCurrency}
+          />
+
+          <h2 className="bank-name" style={{marginTop: "40px"}}>Addiko Bank</h2>
+          <ExchangeRateTable
+            exchangeRates={addikoBankRates}
             selectedCurrency={selectedCurrency}
           />
         </>
