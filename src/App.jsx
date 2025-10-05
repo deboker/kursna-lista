@@ -16,24 +16,15 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const proxyUrl =
-          "http://localhost:3000/proxy?url=https://www.aikbanka.rs/kursna-lista/";
-        const response = await axios.get(proxyUrl);
+        // Mock data for now - replace with actual API call when backend is ready
+        const mockData = [
+          { bank: "AIK Banka", currency: "EUR", buyingRate: "117.00", sellingRate: "118.00" },
+          { bank: "Banca Intesa", currency: "EUR", buyingRate: "117.10", sellingRate: "117.90" },
+          { bank: "Raiffeisen Bank", currency: "EUR", buyingRate: "117.05", sellingRate: "117.95" },
+        ];
 
-        if (response.status === 200) {
-          const html = response.data;
-
-          // Parse the HTML and extract exchange rate data here
-          const exchangeRatesData = parseExchangeRatesFromHtml(html);
-
-          // Update the exchangeRates state with the extracted data
-          setExchangeRates(exchangeRatesData);
-
-          setLoading(false);
-        } else {
-          setError("Failed to fetch data. Status code: " + response.status);
-          setLoading(false);
-        }
+        setExchangeRates(mockData);
+        setLoading(false);
       } catch (err) {
         setError(err.message);
         setLoading(false);
