@@ -90,10 +90,12 @@ h1 {
   td {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    color: #f2f2f2;
   }
 
   :is(th) {
     background-color: #f2f2f2;
+    color: #333;
   }
 }
 
