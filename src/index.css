@@ -131,8 +131,12 @@ h1 {
   }
 
   :is(th) {
-    background-color: #f2f2f2;
-    color: #333;
+    background-color: #232435c9;
+    color: #f2f2f2;
+  }
+
+  :is(tr) {
+    background-color: #232435c9;
   }
 }
 
