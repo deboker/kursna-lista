@@ -25,8 +25,8 @@ exports.handler = async function(event, context) {
         if (parts.length < 6) continue;
 
         const currency = parts[0];
-        const buyingRate = parts[2];
-        const sellingRate = parts[5];
+        const buyingRate = parts[2].replace(',', '.');
+        const sellingRate = parts[5].replace(',', '.');
 
         // Skip if rates are 0
         if (parseFloat(buyingRate) > 0 && parseFloat(sellingRate) > 0) {

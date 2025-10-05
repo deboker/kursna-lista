@@ -38,7 +38,9 @@ function App() {
 
         // Fetch Addiko Bank rates
         const addikoResponse = await axios.get("/.netlify/functions/addiko-bank");
+        console.log("Addiko Bank Response:", addikoResponse);
         if (addikoResponse.status === 200) {
+          console.log("Addiko Bank Data:", addikoResponse.data);
           setAddikoBankRates(addikoResponse.data);
         }
 
