@@ -16,7 +16,16 @@ const currencyNames = {
   RUB: "Ruska rublja",
   HRK: "Hrvatska kuna",
   JPY: "Japanski jen",
-  CNY: "Kineski juan"
+  CNY: "Kineski juan",
+  PLN: "Poljski zlot",
+  TRY: "Turska lira",
+  RON: "Rumunski lej",
+  BGN: "Bugarski lev",
+  MKD: "Makedonski denar",
+  INR: "Indijska rupija",
+  KWD: "Kuvajtski dinar",
+  AED: "UAE dirham",
+  BYN: "Beloruska rublja"
 };
 
 function ExchangeRateTable({ exchangeRates, selectedCurrency }) {

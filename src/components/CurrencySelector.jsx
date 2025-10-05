@@ -20,6 +20,16 @@ function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults })
           <option value="AUD">AUD - Australijski dolar</option>
           <option value="CAD">CAD - Kanadski dolar</option>
           <option value="BAM">BAM - Konvertibilna marka</option>
+          <option value="JPY">JPY - Japanski jen</option>
+          <option value="CNY">CNY - Kineski juan</option>
+          <option value="NOK">NOK - Norveška kruna</option>
+          <option value="SEK">SEK - Švedska kruna</option>
+          <option value="DKK">DKK - Danska kruna</option>
+          <option value="CZK">CZK - Češka kruna</option>
+          <option value="HUF">HUF - Mađarska forinta</option>
+          <option value="PLN">PLN - Poljski zlot</option>
+          <option value="RUB">RUB - Ruska rublja</option>
+          <option value="TRY">TRY - Turska lira</option>
         </select>
         <button onClick={onShowResults} className="show-results-btn">
           Prikaži rezultat
