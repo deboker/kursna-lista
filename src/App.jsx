@@ -16,17 +16,24 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Mock data for now - replace with actual API call when backend is ready
+        const response = await axios.get('/.netlify/functions/scrape');
+
+        if (response.status === 200) {
+          setExchangeRates(response.data);
+          setLoading(false);
+        } else {
+          setError("Failed to fetch data");
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+        // Fallback to mock data if API fails
         const mockData = [
           { bank: "AIK Banka", currency: "EUR", buyingRate: "117.00", sellingRate: "118.00" },
-          { bank: "Banca Intesa", currency: "EUR", buyingRate: "117.10", sellingRate: "117.90" },
-          { bank: "Raiffeisen Bank", currency: "EUR", buyingRate: "117.05", sellingRate: "117.95" },
+          { bank: "AIK Banka", currency: "USD", buyingRate: "106.50", sellingRate: "107.50" },
+          { bank: "AIK Banka", currency: "GBP", buyingRate: "135.00", sellingRate: "136.50" },
         ];
-
         setExchangeRates(mockData);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
         setLoading(false);
       }
     };
