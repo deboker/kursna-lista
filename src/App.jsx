@@ -7,6 +7,7 @@ import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
+  const [aikBankaRates, setAikBankaRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,39 +16,22 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/.netlify/functions/scrape");
-
-        if (response.status === 200) {
-          setExchangeRates(response.data);
-          setLoading(false);
-        } else {
-          setError("Failed to fetch data");
-          setLoading(false);
+        // Fetch NBS rates
+        const nbsResponse = await axios.get("/.netlify/functions/scrape");
+        if (nbsResponse.status === 200) {
+          setExchangeRates(nbsResponse.data);
         }
+
+        // Fetch AIK Banka rates
+        const aikResponse = await axios.get("/.netlify/functions/aik-banka");
+        if (aikResponse.status === 200) {
+          setAikBankaRates(aikResponse.data);
+        }
+
+        setLoading(false);
       } catch (err) {
         console.error("Fetch error:", err);
-        // Fallback to mock data if API fails
-        const mockData = [
-          {
-            bank: "AIK Banka",
-            currency: "EUR",
-            buyingRate: "117.00",
-            sellingRate: "118.00",
-          },
-          {
-            bank: "AIK Banka",
-            currency: "USD",
-            buyingRate: "106.50",
-            sellingRate: "107.50",
-          },
-          {
-            bank: "AIK Banka",
-            currency: "GBP",
-            buyingRate: "135.00",
-            sellingRate: "136.50",
-          },
-        ];
-        setExchangeRates(mockData);
+        setError(err.message);
         setLoading(false);
       }
     };
@@ -100,7 +84,10 @@ function App() {
           />
 
           <h2 className="bank-name" style={{marginTop: "40px"}}>AIK Banka</h2>
-          <p className="coming-soon">Uskoro dostupno</p>
+          <ExchangeRateTable
+            exchangeRates={aikBankaRates}
+            selectedCurrency={selectedCurrency}
+          />
         </>
       ) : null}
     </div>
