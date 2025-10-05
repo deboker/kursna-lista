@@ -14,6 +14,7 @@ function App() {
   const [adriaticBankRates, setAdriaticBankRates] = useState([]);
   const [altaBankaRates, setAltaBankaRates] = useState([]);
   const [apiBankaRates, setApiBankaRates] = useState([]);
+  const [postanskaRates, setPostanskaRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,7 +42,8 @@ function App() {
           fetchBank("/.netlify/functions/addiko-bank", setAddikoBankRates, "Addiko Bank"),
           fetchBank("/.netlify/functions/adriatic-bank", setAdriaticBankRates, "Adriatic Bank"),
           fetchBank("/.netlify/functions/alta-banka", setAltaBankaRates, "Alta Banka"),
-          fetchBank("/.netlify/functions/api-banka", setApiBankaRates, "API Banka")
+          fetchBank("/.netlify/functions/api-banka", setApiBankaRates, "API Banka"),
+          fetchBank("/.netlify/functions/postanska-stedionica", setPostanskaRates, "Poštanska štedionica")
         ]);
 
         setLoading(false);
@@ -145,6 +147,12 @@ function App() {
             exchangeRates={apiBankaRates}
             selectedCurrency={selectedCurrency}
           />
+
+          <h2 className="bank-name" style={{marginTop: "40px"}}>Poštanska štedionica</h2>
+          <ExchangeRateTable
+            exchangeRates={postanskaRates}
+            selectedCurrency={selectedCurrency}
+          />
                 </>
               )}
             </>
@@ -162,7 +170,8 @@ function App() {
                 "Addiko Bank": addikoBankRates,
                 "Adriatic Bank": adriaticBankRates,
                 "Alta Banka": altaBankaRates,
-                "API Banka": apiBankaRates
+                "API Banka": apiBankaRates,
+                "Poštanska štedionica": postanskaRates
               }}
             />
           )}
