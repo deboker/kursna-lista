@@ -19,35 +19,25 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch NBS rates
-        const nbsResponse = await axios.get("/.netlify/functions/scrape");
-        if (nbsResponse.status === 200) {
-          setExchangeRates(nbsResponse.data);
-        }
+        // Fetch all banks in parallel with individual error handling
+        const fetchBank = async (url, setter, bankName) => {
+          try {
+            const response = await axios.get(url);
+            if (response.status === 200) {
+              setter(response.data);
+            }
+          } catch (err) {
+            console.error(`Error fetching ${bankName}:`, err.message);
+          }
+        };
 
-        // Fetch AIK Banka rates
-        const aikResponse = await axios.get("/.netlify/functions/aik-banka");
-        if (aikResponse.status === 200) {
-          setAikBankaRates(aikResponse.data);
-        }
-
-        // Fetch Banca Intesa rates
-        const intesaResponse = await axios.get("/.netlify/functions/banca-intesa");
-        if (intesaResponse.status === 200) {
-          setBancaIntesaRates(intesaResponse.data);
-        }
-
-        // Fetch Addiko Bank rates
-        const addikoResponse = await axios.get("/.netlify/functions/addiko-bank");
-        if (addikoResponse.status === 200) {
-          setAddikoBankRates(addikoResponse.data);
-        }
-
-        // Fetch Adriatic Bank rates
-        const adriaticResponse = await axios.get("/.netlify/functions/adriatic-bank");
-        if (adriaticResponse.status === 200) {
-          setAdriaticBankRates(adriaticResponse.data);
-        }
+        await Promise.all([
+          fetchBank("/.netlify/functions/scrape", setExchangeRates, "NBS"),
+          fetchBank("/.netlify/functions/aik-banka", setAikBankaRates, "AIK Banka"),
+          fetchBank("/.netlify/functions/banca-intesa", setBancaIntesaRates, "Banca Intesa"),
+          fetchBank("/.netlify/functions/addiko-bank", setAddikoBankRates, "Addiko Bank"),
+          fetchBank("/.netlify/functions/adriatic-bank", setAdriaticBankRates, "Adriatic Bank")
+        ]);
 
         setLoading(false);
       } catch (err) {
