@@ -68,7 +68,7 @@ function App() {
         <div
           className="bg-image"
           style={{
-            backgroundImage: 'url("cd260a30-11d9-4634-bb33-ab81da4094c0.jpg")',
+            backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             position: "absolute",
