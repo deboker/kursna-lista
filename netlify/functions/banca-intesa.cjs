@@ -16,25 +16,39 @@ exports.handler = async function(event, context) {
       const date = dateMatch ? dateMatch[1].split('.').reverse().join('-') : new Date().toISOString().split('T')[0];
 
       // Skip header lines and process data
+      // Format: VALUTA PARITET KUPOVNI EFEKTIVA_KUPOVNI SREDNJI PRODAJNI EFEKTIVA_PRODAJNI
       for (let i = 3; i < lines.length; i++) {
         const line = lines[i].trim();
         if (!line) continue;
 
         // Split by whitespace
         const parts = line.split(/\s+/);
-        if (parts.length < 6) continue;
+        if (parts.length < 7) continue;
 
         const currency = parts[0];
-        const buyingRate = parseFloat(parts[2].replace(',', '.')).toFixed(4);
-        const sellingRate = parseFloat(parts[5].replace(',', '.')).toFixed(4);
 
-        // Skip if rates are 0
-        if (parseFloat(buyingRate) > 0 && parseFloat(sellingRate) > 0) {
+        // Skip special entries
+        if (currency === 'EUR_NET' || currency === 'KWD') continue;
+
+        // Columns: 0=VALUTA, 1=PARITET, 2=KUPOVNI, 3=EFEKTIVA_KUPOVNI, 4=SREDNJI, 5=PRODAJNI, 6=EFEKTIVA_PRODAJNI
+        let buyingRate = parseFloat(parts[2].replace(',', '.'));
+        let sellingRate = parseFloat(parts[5].replace(',', '.'));
+
+        // If devize rates are 0, use efektiva rates
+        if (buyingRate === 0 && parts[3]) {
+          buyingRate = parseFloat(parts[3].replace(',', '.'));
+        }
+        if (sellingRate === 0 && parts[6]) {
+          sellingRate = parseFloat(parts[6].replace(',', '.'));
+        }
+
+        // Skip if both rates are still 0 or invalid
+        if (buyingRate > 0 && sellingRate > 0) {
           exchangeRates.push({
             bank: "Banca Intesa",
             currency: currency,
-            buyingRate: buyingRate,
-            sellingRate: sellingRate,
+            buyingRate: buyingRate.toFixed(4),
+            sellingRate: sellingRate.toFixed(4),
             date: date
           });
         }
