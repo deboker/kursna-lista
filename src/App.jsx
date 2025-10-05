@@ -138,7 +138,15 @@ function App() {
         {/* Right Sidebar - Calculator */}
         <div className="right-sidebar">
           {exchangeRates.length > 0 && (
-            <CurrencyConverter allRates={exchangeRates} />
+            <CurrencyConverter
+              allBankRates={{
+                "Narodna Banka Srbije": exchangeRates,
+                "AIK Banka": aikBankaRates,
+                "Banca Intesa": bancaIntesaRates,
+                "Addiko Bank": addikoBankRates,
+                "Adriatic Bank": adriaticBankRates
+              }}
+            />
           )}
         </div>
       </div>

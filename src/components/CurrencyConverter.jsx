@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 
-function CurrencyConverter({ allRates }) {
+function CurrencyConverter({ allBankRates }) {
   const [amount, setAmount] = useState("");
   const [fromCurrency, setFromCurrency] = useState("EUR");
   const [toCurrency, setToCurrency] = useState("RSD");
+  const [selectedBank, setSelectedBank] = useState("Narodna Banka Srbije");
   const [result, setResult] = useState(null);
 
-  // Get unique currencies from all banks
-  const currencies = ["RSD", ...new Set(allRates.map(rate => rate.currency))].sort();
+  // Get available banks
+  const banks = Object.keys(allBankRates).filter(bank => allBankRates[bank].length > 0);
+
+  // Get rates for selected bank
+  const selectedRates = allBankRates[selectedBank] || [];
+
+  // Get unique currencies from selected bank
+  const currencies = ["RSD", ...new Set(selectedRates.map(rate => rate.currency))].sort();
 
   const handleConvert = () => {
     if (!amount || isNaN(amount) || amount <= 0) {
@@ -19,7 +26,7 @@ function CurrencyConverter({ allRates }) {
 
     // If converting from RSD to foreign currency
     if (fromCurrency === "RSD" && toCurrency !== "RSD") {
-      const targetRate = allRates.find(r => r.currency === toCurrency);
+      const targetRate = selectedRates.find(r => r.currency === toCurrency);
       if (targetRate) {
         const middleRate = (parseFloat(targetRate.buyingRate) + parseFloat(targetRate.sellingRate)) / 2;
         const converted = numAmount / middleRate;
@@ -28,7 +35,7 @@ function CurrencyConverter({ allRates }) {
     }
     // If converting from foreign currency to RSD
     else if (fromCurrency !== "RSD" && toCurrency === "RSD") {
-      const sourceRate = allRates.find(r => r.currency === fromCurrency);
+      const sourceRate = selectedRates.find(r => r.currency === fromCurrency);
       if (sourceRate) {
         const middleRate = (parseFloat(sourceRate.buyingRate) + parseFloat(sourceRate.sellingRate)) / 2;
         const converted = numAmount * middleRate;
@@ -37,8 +44,8 @@ function CurrencyConverter({ allRates }) {
     }
     // If converting between two foreign currencies
     else if (fromCurrency !== "RSD" && toCurrency !== "RSD") {
-      const sourceRate = allRates.find(r => r.currency === fromCurrency);
-      const targetRate = allRates.find(r => r.currency === toCurrency);
+      const sourceRate = selectedRates.find(r => r.currency === fromCurrency);
+      const targetRate = selectedRates.find(r => r.currency === toCurrency);
       if (sourceRate && targetRate) {
         const sourceMiddle = (parseFloat(sourceRate.buyingRate) + parseFloat(sourceRate.sellingRate)) / 2;
         const targetMiddle = (parseFloat(targetRate.buyingRate) + parseFloat(targetRate.sellingRate)) / 2;
@@ -57,6 +64,15 @@ function CurrencyConverter({ allRates }) {
     <div className="currency-converter">
       <h2>Konvertor valuta</h2>
       <div className="converter-form">
+        <div className="form-group">
+          <label>Banka:</label>
+          <select value={selectedBank} onChange={(e) => setSelectedBank(e.target.value)}>
+            {banks.map(bank => (
+              <option key={bank} value={bank}>{bank}</option>
+            ))}
+          </select>
+        </div>
+
         <div className="form-group">
           <label>Iznos:</label>
           <input
