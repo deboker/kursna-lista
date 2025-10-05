@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CurrencySelector from "./components/CurrencySelector";
 import ExchangeRateTable from "./components/ExchangeRateTable";
+import CurrencyConverter from "./components/CurrencyConverter";
 import "./index.css";
 import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 
@@ -82,11 +83,18 @@ function App() {
         <p>Učitavanje...</p>
       ) : error ? (
         <p>Greška: {error}</p>
-      ) : showResults && exchangeRates.length > 0 ? (
+      ) : (
         <>
-          {exchangeRates[0].date && (
-            <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
+          {/* Currency Converter */}
+          {exchangeRates.length > 0 && (
+            <CurrencyConverter allRates={exchangeRates} />
           )}
+
+          {showResults && exchangeRates.length > 0 && (
+            <>
+              {exchangeRates[0].date && (
+                <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
+              )}
 
           <h2 className="bank-name">Narodna Banka Srbije</h2>
           <ExchangeRateTable
@@ -117,8 +125,10 @@ function App() {
             exchangeRates={adriaticBankRates}
             selectedCurrency={selectedCurrency}
           />
+            </>
+          )}
         </>
-      ) : null}
+      )}
     </div>
   );
 }
