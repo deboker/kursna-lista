@@ -7,6 +7,7 @@ import "./index.css";
 import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
 import aikLogo from "./assets/aik-banka-logo.png";
+import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -131,7 +132,12 @@ function App() {
             selectedCurrency={selectedCurrency}
           />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>Banca Intesa</h2>
+          <h2 className="bank-name" style={{marginTop: "40px"}}>
+            <a href="https://www.bancaintesa.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={intesaLogo} alt="Banca Intesa logo" className="bank-logo" />
+              Banca Intesa
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={bancaIntesaRates}
             selectedCurrency={selectedCurrency}
