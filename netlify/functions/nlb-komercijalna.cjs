@@ -1,53 +1,93 @@
-const axios = require("axios");
+const chromium = require("@sparticuz/chromium");
+const puppeteer = require("puppeteer-core");
 
 exports.handler = async function(event, context) {
+  let browser = null;
+
   try {
-    // NLB Komercijalna Banka uses dynamically loaded data via Adobe AEM
-    // Since they don't provide a public API, we'll use the official NBS rates
-    // as a base (all Serbian banks use NBS official rates with slight variations)
+    // Launch browser with Chromium for Netlify
+    browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
 
-    const response = await axios.get('https://kurs.resenje.org/api/v1/rates/today');
+    const page = await browser.newPage();
 
-    if (response.status === 200 && response.data && response.data.rates) {
-      const rates = response.data.rates;
-      const exchangeRates = [];
+    // Navigate to NLB exchange rates page
+    await page.goto('https://www.nlbkb.rs/stanovnistvo/pomoc-i-alati/kompletna-kursna-lista', {
+      waitUntil: 'networkidle0',
+      timeout: 30000
+    });
 
-      // Convert API response to our format
-      // NLB typically applies a small margin to NBS rates for buy/sell
-      rates.forEach(rate => {
-        if (rate.code && rate.exchange_middle) {
-          const middleRate = parseFloat(rate.exchange_middle);
+    // Wait for the exchange rate table to load
+    await page.waitForSelector('.js-exchange-table-table tbody tr', { timeout: 10000 });
 
-          // Apply typical bank margins (approximately 2-3% spread)
-          const buyingRate = (middleRate * 0.98).toFixed(4);
-          const sellingRate = (middleRate * 1.02).toFixed(4);
+    // Extract exchange rate data
+    const exchangeRates = await page.evaluate(() => {
+      const rows = document.querySelectorAll('.js-exchange-table-table tbody tr');
+      const rates = [];
 
-          exchangeRates.push({
-            bank: "NLB Komercijalna Banka",
-            currency: rate.code.toUpperCase(),
-            buyingRate: buyingRate,
-            sellingRate: sellingRate,
-            date: rate.date || new Date().toISOString().split('T')[0]
-          });
+      // Get date if available
+      const dateElement = document.querySelector('.js-exchange-table-valid-from');
+      let date = new Date().toISOString().split('T')[0];
+
+      if (dateElement && dateElement.textContent) {
+        const dateText = dateElement.textContent.trim();
+        const dateMatch = dateText.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+        if (dateMatch) {
+          date = `${dateMatch[3]}-${dateMatch[2]}-${dateMatch[1]}`;
+        }
+      }
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+
+        if (cells.length >= 6) {
+          const currency = cells[0].textContent.trim();
+          const buyingRate = cells[2].textContent.trim().replace(',', '.');
+          const middleRate = cells[3].textContent.trim().replace(',', '.');
+          const sellingRate = cells[4].textContent.trim().replace(',', '.');
+
+          // Only add valid currencies with non-zero rates
+          if (currency &&
+              buyingRate &&
+              sellingRate &&
+              parseFloat(buyingRate) > 0 &&
+              parseFloat(sellingRate) > 0) {
+            rates.push({
+              bank: "NLB Komercijalna Banka",
+              currency: currency,
+              buyingRate: parseFloat(buyingRate).toFixed(4),
+              sellingRate: parseFloat(sellingRate).toFixed(4),
+              date: date
+            });
+          }
         }
       });
 
-      return {
-        statusCode: 200,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify(exchangeRates)
-      };
-    } else {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: "No data available" })
-      };
-    }
+      return rates;
+    });
+
+    await browser.close();
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(exchangeRates)
+    };
+
   } catch (error) {
     console.error("Error fetching NLB Komercijalna Banka rates:", error.message);
+
+    if (browser) {
+      await browser.close();
+    }
+
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message })
