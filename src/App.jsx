@@ -9,6 +9,7 @@ import nbsLogo from "./assets/narodna-banka-logo.svg";
 import aikLogo from "./assets/aik-banka-logo.png";
 import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
 import addikoLogo from "./assets/addiko-bank-logo.png";
+import adriaticLogo from "./assets/Adriatic-banka-logo.png";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -155,7 +156,12 @@ function App() {
             selectedCurrency={selectedCurrency}
           />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>Adriatic Bank</h2>
+          <h2 className="bank-name" style={{marginTop: "40px"}}>
+            <a href="https://adriaticbank.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={adriaticLogo} alt="Adriatic Bank logo" className="bank-logo" />
+              Adriatic Bank
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={adriaticBankRates}
             selectedCurrency={selectedCurrency}
