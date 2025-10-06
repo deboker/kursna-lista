@@ -162,7 +162,8 @@ h2 {
   text-align: center;
   color: #f2f2f2;
   font-size: 18px;
-  margin: 20px 0 10px 0;
+  margin: 20px 0 0 0;
+  background-color: #232435c9;
 }
 
 .bank-link {
@@ -172,6 +173,7 @@ h2 {
   color: #f2f2f2;
   text-decoration: none;
   transition: opacity 0.3s;
+  filter: brightness(0) invert(1);
 }
 
 .bank-link:hover {
@@ -268,7 +270,7 @@ h2 {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 0;
   }
 
   :is(th),
