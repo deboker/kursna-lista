@@ -10,6 +10,7 @@ import aikLogo from "./assets/aik-banka-logo.png";
 import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
 import addikoLogo from "./assets/addiko-bank-logo.png";
 import adriaticLogo from "./assets/Adriatic-banka-logo.png";
+import altaLogo from "./assets/alta-banka-logo.png";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -167,7 +168,12 @@ function App() {
             selectedCurrency={selectedCurrency}
           />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>Alta Banka</h2>
+          <h2 className="bank-name" style={{marginTop: "40px"}}>
+            <a href="https://altabanka.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={altaLogo} alt="Alta Banka logo" className="bank-logo" />
+              Alta Banka
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={altaBankaRates}
             selectedCurrency={selectedCurrency}
