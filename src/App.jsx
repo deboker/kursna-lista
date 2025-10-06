@@ -5,6 +5,7 @@ import ExchangeRateTable from "./components/ExchangeRateTable";
 import CurrencyConverter from "./components/CurrencyConverter";
 import "./index.css";
 import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
+import nbsLogo from "./assets/narodna-banka-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -107,7 +108,12 @@ function App() {
                 <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
               )}
 
-          <h2 className="bank-name">Narodna Banka Srbije</h2>
+          <h2 className="bank-name">
+            <a href="https://www.nbs.rs/sr_RS/indeks/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={nbsLogo} alt="Narodna Banka Srbije logo" className="bank-logo" />
+              Narodna Banka Srbije
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={exchangeRates}
             selectedCurrency={selectedCurrency}
