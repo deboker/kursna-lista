@@ -13,6 +13,7 @@ import adriaticLogo from "./assets/Adriatic-banka-logo.png";
 import altaLogo from "./assets/alta-banka-logo.png";
 import apiLogo from "./assets/api-banka-logo.svg";
 import postanskaLogo from "./assets/postanska-stedionica-logo.svg";
+import ersteLogo from "./assets/erte-bank-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -23,6 +24,7 @@ function App() {
   const [altaBankaRates, setAltaBankaRates] = useState([]);
   const [apiBankaRates, setApiBankaRates] = useState([]);
   const [postanskaRates, setPostanskaRates] = useState([]);
+  const [ersteBankRates, setErsteBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -79,6 +81,11 @@ function App() {
             "/.netlify/functions/postanska-stedionica",
             setPostanskaRates,
             "Poštanska štedionica"
+          ),
+          fetchBank(
+            "/.netlify/functions/erste-bank",
+            setErsteBankRates,
+            "Erste Bank"
           ),
         ]);
 
@@ -289,6 +296,26 @@ function App() {
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
                     <a
+                      href="https://www.erstebank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={ersteLogo}
+                        alt="Erste Bank logo"
+                        className="bank-logo"
+                      />
+                      Erste Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={ersteBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
                       href="https://www.posted.co.rs/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -324,6 +351,7 @@ function App() {
                 "Adriatic Bank": adriaticBankRates,
                 "Alta Banka": altaBankaRates,
                 "API Banka": apiBankaRates,
+                "Erste Bank": ersteBankRates,
                 "Poštanska štedionica": postanskaRates,
               }}
             />
