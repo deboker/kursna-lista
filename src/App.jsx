@@ -6,6 +6,7 @@ import CurrencyConverter from "./components/CurrencyConverter";
 import "./index.css";
 import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
+import aikLogo from "./assets/aik-banka-logo.png";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -119,7 +120,12 @@ function App() {
             selectedCurrency={selectedCurrency}
           />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>AIK Banka</h2>
+          <h2 className="bank-name" style={{marginTop: "40px"}}>
+            <a href="https://www.aikbank.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={aikLogo} alt="AIK Banka logo" className="bank-logo" />
+              AIK Banka
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={aikBankaRates}
             selectedCurrency={selectedCurrency}
