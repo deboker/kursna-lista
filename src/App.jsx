@@ -11,6 +11,7 @@ import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
 import addikoLogo from "./assets/addiko-bank-logo.png";
 import adriaticLogo from "./assets/Adriatic-banka-logo.png";
 import altaLogo from "./assets/alta-banka-logo.png";
+import apiLogo from "./assets/api-banka-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -266,7 +267,19 @@ function App() {
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
-                    API Banka
+                    <a
+                      href="https://www.apibank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={apiLogo}
+                        alt="API Banka logo"
+                        className="bank-logo"
+                      />
+                      API Banka
+                    </a>
                   </h2>
                   <ExchangeRateTable
                     exchangeRates={apiBankaRates}
