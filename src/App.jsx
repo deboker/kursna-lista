@@ -8,6 +8,7 @@ import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
 import aikLogo from "./assets/aik-banka-logo.png";
 import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
+import addikoLogo from "./assets/addiko-bank-logo.png";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -143,7 +144,12 @@ function App() {
             selectedCurrency={selectedCurrency}
           />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>Addiko Bank</h2>
+          <h2 className="bank-name" style={{marginTop: "40px"}}>
+            <a href="https://www.addiko.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
+              <img src={addikoLogo} alt="Addiko Bank logo" className="bank-logo" />
+              Addiko Bank
+            </a>
+          </h2>
           <ExchangeRateTable
             exchangeRates={addikoBankRates}
             selectedCurrency={selectedCurrency}
