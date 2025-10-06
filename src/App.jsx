@@ -12,6 +12,7 @@ import addikoLogo from "./assets/addiko-bank-logo.png";
 import adriaticLogo from "./assets/Adriatic-banka-logo.png";
 import altaLogo from "./assets/alta-banka-logo.png";
 import apiLogo from "./assets/api-banka-logo.svg";
+import postanskaLogo from "./assets/postanska-stedionica-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -287,7 +288,19 @@ function App() {
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
-                    Poštanska štedionica
+                    <a
+                      href="https://www.posted.co.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={postanskaLogo}
+                        alt="Poštanska štedionica logo"
+                        className="bank-logo"
+                      />
+                      Poštanska štedionica
+                    </a>
                   </h2>
                   <ExchangeRateTable
                     exchangeRates={postanskaRates}
