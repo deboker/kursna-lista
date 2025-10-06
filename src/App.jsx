@@ -80,6 +80,7 @@ function App() {
         <div className="background-gradient"></div>
       </div>
       <h1>Kursna Lista</h1>
+      <h2>Uporedite devizne kurseve banaka i menjačnica u Srbiji na jednom mestu</h2>
 
       <div className="app-container">
         {/* Left Sidebar - Ads */}
@@ -95,9 +96,9 @@ function App() {
             onShowResults={handleShowResults}
           />
           {loading ? (
-            <p>Učitavanje...</p>
+            <p className="loading-message">⏳ Učitavanje...</p>
           ) : error ? (
-            <p>Greška: {error}</p>
+            <p className="error-message">❌ Greška: {error}</p>
           ) : (
             <>
               {showResults && exchangeRates.length > 0 && (

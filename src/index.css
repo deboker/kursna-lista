@@ -85,6 +85,26 @@ h1 {
   color: #f2f2f2;
 }
 
+h2 {
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.error-message {
+  color: #ff6b6b;
+}
+
 .exchange-date {
   text-align: center;
   color: #f2f2f2;
