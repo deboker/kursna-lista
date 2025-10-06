@@ -1,22 +1,34 @@
-// Mock data for AIK Banka - to be replaced with real scraping when available
+// AIK Banka - Uses NBS rates with bank spread
+// Website has JavaScript-heavy interface that is difficult to scrape
+// Rates calculated from NBS middle rate ±2.5% spread
+
+const axios = require("axios");
+
 exports.handler = async function(event, context) {
   try {
-    // Mock exchange rates for AIK Banka (based on 03.10.2025)
-    // TODO: Replace with real scraping when available
-    const exchangeRates = [
-      { bank: "AIK Banka", currency: "EUR", buyingRate: "114.2330", sellingRate: "120.0911", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "USD", buyingRate: "96.9768", sellingRate: "102.9754", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "GBP", buyingRate: "130.2397", sellingRate: "138.2957", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "CHF", buyingRate: "121.5218", sellingRate: "129.0386", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "AUD", buyingRate: "63.9078", sellingRate: "67.8608", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "CAD", buyingRate: "69.4114", sellingRate: "73.7048", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "JPY", buyingRate: "65.6237", sellingRate: "69.6829", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "RUB", buyingRate: "1.0292", sellingRate: "1.3924", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "SEK", buyingRate: "10.3095", sellingRate: "10.9471", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "NOK", buyingRate: "9.7042", sellingRate: "10.3044", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "DKK", buyingRate: "15.2171", sellingRate: "16.1583", date: "2025-10-03" },
-      { bank: "AIK Banka", currency: "HUF", buyingRate: "28.5769", sellingRate: "31.5849", date: "2025-10-03" },
-    ];
+    // Fetch NBS rates
+    const nbsResponse = await axios.get('https://kurs.resenje.org/api/v1/rates/today');
+    const nbsRates = nbsResponse.data.rates;
+
+    const exchangeRates = [];
+    const date = nbsResponse.data.rates[0]?.date || new Date().toISOString().split('T')[0];
+
+    nbsRates.forEach(rate => {
+      if (rate.code && rate.exchange_middle) {
+        const middleRate = parseFloat(rate.exchange_middle);
+        // Apply 2.5% spread (buying -2.5%, selling +2.5%)
+        const buyingRate = middleRate * 0.975;
+        const sellingRate = middleRate * 1.025;
+
+        exchangeRates.push({
+          bank: "AIK Banka",
+          currency: rate.code.toUpperCase(),
+          buyingRate: buyingRate.toFixed(4),
+          sellingRate: sellingRate.toFixed(4),
+          date: date
+        });
+      }
+    });
 
     return {
       statusCode: 200,
@@ -27,6 +39,7 @@ exports.handler = async function(event, context) {
       body: JSON.stringify(exchangeRates)
     };
   } catch (error) {
+    console.error("Error fetching AIK Banka rates:", error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message })

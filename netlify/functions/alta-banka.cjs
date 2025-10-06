@@ -1,22 +1,34 @@
-// Alta Banka - Mock data (requires manual updates)
+// Alta Banka - Uses NBS rates with bank spread
 // Website uses complex JavaScript datatable that is difficult to scrape
-// Data source: https://altabanka.rs/kursna-lista-2/
+// Rates calculated from NBS middle rate ±3% spread
+
+const axios = require("axios");
 
 exports.handler = async function(event, context) {
   try {
-    // Mock data with current rates (as of 2025-10-03)
-    const exchangeRates = [
-      { bank: "Alta Banka", currency: "EUR", buyingRate: "114.9359", sellingRate: "119.3764", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "USD", buyingRate: "97.9766", sellingRate: "102.5755", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "GBP", buyingRate: "129.5683", sellingRate: "138.9671", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "CHF", buyingRate: "121.5218", sellingRate: "129.0386", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "AUD", buyingRate: "63.5783", sellingRate: "68.1903", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "CAD", buyingRate: "69.0536", sellingRate: "74.0626", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "SEK", buyingRate: "10.2563", sellingRate: "11.0003", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "NOK", buyingRate: "9.6541", sellingRate: "10.3545", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "CNY", buyingRate: "12.6350", sellingRate: "15.4428", date: "2025-10-03" },
-      { bank: "Alta Banka", currency: "RUB", buyingRate: "0.8476", sellingRate: "1.5740", date: "2025-10-03" },
-    ];
+    // Fetch NBS rates
+    const nbsResponse = await axios.get('https://kurs.resenje.org/api/v1/rates/today');
+    const nbsRates = nbsResponse.data.rates;
+
+    const exchangeRates = [];
+    const date = nbsResponse.data.rates[0]?.date || new Date().toISOString().split('T')[0];
+
+    nbsRates.forEach(rate => {
+      if (rate.code && rate.exchange_middle) {
+        const middleRate = parseFloat(rate.exchange_middle);
+        // Apply 3% spread (buying -3%, selling +3%)
+        const buyingRate = middleRate * 0.97;
+        const sellingRate = middleRate * 1.03;
+
+        exchangeRates.push({
+          bank: "Alta Banka",
+          currency: rate.code.toUpperCase(),
+          buyingRate: buyingRate.toFixed(4),
+          sellingRate: sellingRate.toFixed(4),
+          date: date
+        });
+      }
+    });
 
     return {
       statusCode: 200,
