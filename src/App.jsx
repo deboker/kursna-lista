@@ -4,7 +4,7 @@ import CurrencySelector from "./components/CurrencySelector";
 import ExchangeRateTable from "./components/ExchangeRateTable";
 import CurrencyConverter from "./components/CurrencyConverter";
 import "./index.css";
-import backgroundImage from "./assets/cd260a30-11d9-4634-bb33-ab81da4094c0.jpg";
+import backgroundImage from "./assets/7405151_3647208.jpg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
 import aikLogo from "./assets/aik-banka-logo.png";
 import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
@@ -43,13 +43,41 @@ function App() {
 
         await Promise.all([
           fetchBank("/.netlify/functions/scrape", setExchangeRates, "NBS"),
-          fetchBank("/.netlify/functions/aik-banka", setAikBankaRates, "AIK Banka"),
-          fetchBank("/.netlify/functions/banca-intesa", setBancaIntesaRates, "Banca Intesa"),
-          fetchBank("/.netlify/functions/addiko-bank", setAddikoBankRates, "Addiko Bank"),
-          fetchBank("/.netlify/functions/adriatic-bank", setAdriaticBankRates, "Adriatic Bank"),
-          fetchBank("/.netlify/functions/alta-banka", setAltaBankaRates, "Alta Banka"),
-          fetchBank("/.netlify/functions/api-banka", setApiBankaRates, "API Banka"),
-          fetchBank("/.netlify/functions/postanska-stedionica", setPostanskaRates, "Poštanska štedionica")
+          fetchBank(
+            "/.netlify/functions/aik-banka",
+            setAikBankaRates,
+            "AIK Banka"
+          ),
+          fetchBank(
+            "/.netlify/functions/banca-intesa",
+            setBancaIntesaRates,
+            "Banca Intesa"
+          ),
+          fetchBank(
+            "/.netlify/functions/addiko-bank",
+            setAddikoBankRates,
+            "Addiko Bank"
+          ),
+          fetchBank(
+            "/.netlify/functions/adriatic-bank",
+            setAdriaticBankRates,
+            "Adriatic Bank"
+          ),
+          fetchBank(
+            "/.netlify/functions/alta-banka",
+            setAltaBankaRates,
+            "Alta Banka"
+          ),
+          fetchBank(
+            "/.netlify/functions/api-banka",
+            setApiBankaRates,
+            "API Banka"
+          ),
+          fetchBank(
+            "/.netlify/functions/postanska-stedionica",
+            setPostanskaRates,
+            "Poštanska štedionica"
+          ),
         ]);
 
         setLoading(false);
@@ -86,7 +114,9 @@ function App() {
         <div className="background-gradient"></div>
       </div>
       <h1>Kursna Lista</h1>
-      <h2>Uporedite devizne kurseve banaka i menjačnica u Srbiji na jednom mestu</h2>
+      <h2>
+        Uporedite devizne kurseve banaka i menjačnica u Srbiji na jednom mestu
+      </h2>
 
       <div className="app-container">
         {/* Left Sidebar - Ads */}
@@ -109,87 +139,147 @@ function App() {
             <>
               {showResults && exchangeRates.length > 0 && (
                 <>
-              {exchangeRates[0].date && (
-                <p className="exchange-date">Datum: {exchangeRates[0].date}</p>
-              )}
+                  {exchangeRates[0].date && (
+                    <p className="exchange-date">
+                      Datum: {exchangeRates[0].date}
+                    </p>
+                  )}
 
-          <h2 className="bank-name">
-            <a href="https://www.nbs.rs/sr_RS/indeks/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={nbsLogo} alt="Narodna Banka Srbije logo" className="bank-logo" />
-              Narodna Banka Srbije
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={exchangeRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name">
+                    <a
+                      href="https://www.nbs.rs/sr_RS/indeks/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={nbsLogo}
+                        alt="Narodna Banka Srbije logo"
+                        className="bank-logo"
+                      />
+                      Narodna Banka Srbije
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={exchangeRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>
-            <a href="https://www.aikbank.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={aikLogo} alt="AIK Banka logo" className="bank-logo" />
-              AIK Banka
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={aikBankaRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.aikbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={aikLogo}
+                        alt="AIK Banka logo"
+                        className="bank-logo"
+                      />
+                      AIK Banka
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={aikBankaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>
-            <a href="https://www.bancaintesa.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={intesaLogo} alt="Banca Intesa logo" className="bank-logo" />
-              Banca Intesa
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={bancaIntesaRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.bancaintesa.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={intesaLogo}
+                        alt="Banca Intesa logo"
+                        className="bank-logo"
+                      />
+                      Banca Intesa
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={bancaIntesaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>
-            <a href="https://www.addiko.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={addikoLogo} alt="Addiko Bank logo" className="bank-logo" />
-              Addiko Bank
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={addikoBankRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.addiko.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={addikoLogo}
+                        alt="Addiko Bank logo"
+                        className="bank-logo"
+                      />
+                      Addiko Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={addikoBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>
-            <a href="https://adriaticbank.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={adriaticLogo} alt="Adriatic Bank logo" className="bank-logo" />
-              Adriatic Bank
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={adriaticBankRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://adriaticbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={adriaticLogo}
+                        alt="Adriatic Bank logo"
+                        className="bank-logo"
+                      />
+                      Adriatic Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={adriaticBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>
-            <a href="https://altabanka.rs/" target="_blank" rel="noopener noreferrer" className="bank-link">
-              <img src={altaLogo} alt="Alta Banka logo" className="bank-logo" />
-              Alta Banka
-            </a>
-          </h2>
-          <ExchangeRateTable
-            exchangeRates={altaBankaRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://altabanka.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={altaLogo}
+                        alt="Alta Banka logo"
+                        className="bank-logo"
+                      />
+                      Alta Banka
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={altaBankaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>API Banka</h2>
-          <ExchangeRateTable
-            exchangeRates={apiBankaRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    API Banka
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={apiBankaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
 
-          <h2 className="bank-name" style={{marginTop: "40px"}}>Poštanska štedionica</h2>
-          <ExchangeRateTable
-            exchangeRates={postanskaRates}
-            selectedCurrency={selectedCurrency}
-          />
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    Poštanska štedionica
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={postanskaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -208,7 +298,7 @@ function App() {
                 "Adriatic Bank": adriaticBankRates,
                 "Alta Banka": altaBankaRates,
                 "API Banka": apiBankaRates,
-                "Poštanska štedionica": postanskaRates
+                "Poštanska štedionica": postanskaRates,
               }}
             />
           )}
