@@ -164,7 +164,7 @@ function App() {
         ></div>
         <div className="background-gradient"></div>
       </div>
-      <h1>Kursna Lista</h1>
+      <h1>Kursna Lista <span className="live-text">live</span></h1>
       <h2>
         Uporedite devizne kurseve banaka i menjačnica u Srbiji na jednom mestu
       </h2>

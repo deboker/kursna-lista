@@ -85,6 +85,19 @@ h1 {
   color: #f2f2f2;
 }
 
+.live-text {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% {
+    color: white;
+  }
+  50% {
+    color: #4caf50;
+  }
+}
+
 h2 {
   text-align: center;
   color: #f2f2f2;
