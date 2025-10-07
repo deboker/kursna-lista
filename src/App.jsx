@@ -192,7 +192,7 @@ function App() {
                 <>
                   {exchangeRates[0].date && (
                     <p className="exchange-date">
-                      Datum: {exchangeRates[0].date}
+                      Datum: {exchangeRates[0].date.split('-').reverse().join('.')}
                     </p>
                   )}
 
