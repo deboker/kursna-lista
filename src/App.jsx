@@ -15,6 +15,7 @@ import apiLogo from "./assets/api-banka-logo.svg";
 import postanskaLogo from "./assets/postanska-stedionica-logo.svg";
 import ersteLogo from "./assets/erte-bank-logo.svg";
 import nlbLogo from "./assets/nlb-komercialna-logo.svg";
+import otpLogo from "./assets/otp-banka-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -27,6 +28,7 @@ function App() {
   const [postanskaRates, setPostanskaRates] = useState([]);
   const [ersteBankRates, setErsteBankRates] = useState([]);
   const [nlbKomercijalnaRates, setNlbKomercijalnaRates] = useState([]);
+  const [otpBankaRates, setOtpBankaRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -93,6 +95,11 @@ function App() {
             "/.netlify/functions/nlb-komercijalna",
             setNlbKomercijalnaRates,
             "NLB Komercijalna Banka"
+          ),
+          fetchBank(
+            "/.netlify/functions/otp-banka",
+            setOtpBankaRates,
+            "OTP Banka"
           ),
         ]);
 
@@ -360,6 +367,26 @@ function App() {
                     exchangeRates={nlbKomercijalnaRates}
                     selectedCurrency={selectedCurrency}
                   />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.otpbanka.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={otpLogo}
+                        alt="OTP Banka logo"
+                        className="bank-logo"
+                      />
+                      OTP Banka
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={otpBankaRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -381,6 +408,7 @@ function App() {
                 "Erste Bank": ersteBankRates,
                 "Poštanska štedionica": postanskaRates,
                 "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                "OTP Banka": otpBankaRates,
               }}
             />
           )}
