@@ -87,6 +87,9 @@ h1 {
 
 .live-text {
   animation: live-pulse 2s ease-in-out infinite;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-style: italic;
 }
 
 @keyframes live-pulse {
