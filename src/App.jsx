@@ -31,6 +31,7 @@ function App() {
   const [nlbKomercijalnaRates, setNlbKomercijalnaRates] = useState([]);
   const [otpBankaRates, setOtpBankaRates] = useState([]);
   const [procreditBankRates, setProcreditBankRates] = useState([]);
+  const [raiffeisenBankRates, setRaiffeisenBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -107,6 +108,11 @@ function App() {
             "/.netlify/functions/procredit-bank",
             setProcreditBankRates,
             "ProCredit Bank"
+          ),
+          fetchBank(
+            "/.netlify/functions/raiffeisen-bank",
+            setRaiffeisenBankRates,
+            "Raiffeisen Bank"
           ),
         ]);
 
@@ -414,6 +420,21 @@ function App() {
                     exchangeRates={procreditBankRates}
                     selectedCurrency={selectedCurrency}
                   />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.raiffeisenbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      Raiffeisen Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={raiffeisenBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -437,6 +458,7 @@ function App() {
                 "NLB Komercijalna Banka": nlbKomercijalnaRates,
                 "OTP Banka": otpBankaRates,
                 "ProCredit Bank": procreditBankRates,
+                "Raiffeisen Bank": raiffeisenBankRates,
               }}
             />
           )}
