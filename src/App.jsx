@@ -18,6 +18,7 @@ import nlbLogo from "./assets/nlb-komercialna-logo.svg";
 import otpLogo from "./assets/otp-banka-logo.svg";
 import procreditLogo from "./assets/procredit-bank-logo.svg";
 import raiffeisenLogo from "./assets/Raiffeisen-Bank-logo.svg";
+import unicreditLogo from "./assets/unicredit-bank-logo.webp";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -33,6 +34,7 @@ function App() {
   const [otpBankaRates, setOtpBankaRates] = useState([]);
   const [procreditBankRates, setProcreditBankRates] = useState([]);
   const [raiffeisenBankRates, setRaiffeisenBankRates] = useState([]);
+  const [unicreditBankRates, setUnicreditBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -114,6 +116,11 @@ function App() {
             "/.netlify/functions/raiffeisen-bank",
             setRaiffeisenBankRates,
             "Raiffeisen Bank"
+          ),
+          fetchBank(
+            "/.netlify/functions/unicredit-bank",
+            setUnicreditBankRates,
+            "UniCredit Bank"
           ),
         ]);
 
@@ -441,6 +448,26 @@ function App() {
                     exchangeRates={raiffeisenBankRates}
                     selectedCurrency={selectedCurrency}
                   />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.unicreditbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={unicreditLogo}
+                        alt="UniCredit Bank logo"
+                        className="bank-logo"
+                      />
+                      UniCredit Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={unicreditBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -465,6 +492,7 @@ function App() {
                 "OTP Banka": otpBankaRates,
                 "ProCredit Bank": procreditBankRates,
                 "Raiffeisen Bank": raiffeisenBankRates,
+                "UniCredit Bank": unicreditBankRates,
               }}
             />
           )}
