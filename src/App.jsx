@@ -215,6 +215,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={exchangeRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -235,6 +252,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={aikBankaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -255,6 +289,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={bancaIntesaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -275,6 +326,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={addikoBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -295,6 +363,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={adriaticBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -315,6 +400,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={altaBankaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -335,6 +437,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={apiBankaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -355,6 +474,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={ersteBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -375,6 +511,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={postanskaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -395,6 +548,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={nlbKomercijalnaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -415,6 +585,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={otpBankaRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -435,6 +622,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={procreditBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -455,6 +659,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={raiffeisenBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -475,6 +696,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={unicreditBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
 
                   <h2 className="bank-name" style={{ marginTop: "40px" }}>
@@ -495,6 +733,23 @@ function App() {
                   <ExchangeRateTable
                     exchangeRates={yettelBankRates}
                     selectedCurrency={selectedCurrency}
+                    allBankRates={{
+                      "Narodna Banka Srbije": exchangeRates,
+                      "AIK Banka": aikBankaRates,
+                      "Banca Intesa": bancaIntesaRates,
+                      "Addiko Bank": addikoBankRates,
+                      "Adriatic Bank": adriaticBankRates,
+                      "Alta Banka": altaBankaRates,
+                      "API Banka": apiBankaRates,
+                      "Erste Bank": ersteBankRates,
+                      "Poštanska štedionica": postanskaRates,
+                      "NLB Komercijalna Banka": nlbKomercijalnaRates,
+                      "OTP Banka": otpBankaRates,
+                      "ProCredit Bank": procreditBankRates,
+                      "Raiffeisen Bank": raiffeisenBankRates,
+                      "UniCredit Bank": unicreditBankRates,
+                      "Yettel Bank": yettelBankRates,
+                    }}
                   />
                 </>
               )}
