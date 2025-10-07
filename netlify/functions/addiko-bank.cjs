@@ -23,15 +23,19 @@ exports.handler = async function(event, context) {
         // Data rows have 7 cells: Valuta, Naziv zemlje, Šifra valute, Važi za, Kupovni, Srednji, Prodajni
         if (cells.length === 7 && index > 1) {
           const currency = $(cells[0]).text().trim(); // EUR, USD, etc
-          const buyingRate = parseFloat($(cells[4]).text().trim().replace(',', '.')).toFixed(4); // Kupovni
-          const sellingRate = parseFloat($(cells[6]).text().trim().replace(',', '.')).toFixed(4); // Prodajni
+          const buyingRateText = $(cells[4]).text().trim().replace(',', '.');
+          const sellingRateText = $(cells[6]).text().trim().replace(',', '.');
 
-          if (currency && buyingRate && sellingRate && parseFloat(buyingRate) > 0) {
+          const buyingRate = buyingRateText ? parseFloat(buyingRateText) : 0;
+          const sellingRate = sellingRateText ? parseFloat(sellingRateText) : 0;
+
+          // Include currency if it has at least a selling rate (some currencies like EUR may not have buying rate)
+          if (currency && sellingRate > 0) {
             exchangeRates.push({
               bank: "Addiko Bank",
               currency: currency,
-              buyingRate: buyingRate,
-              sellingRate: sellingRate,
+              buyingRate: buyingRate > 0 ? buyingRate.toFixed(4) : sellingRate.toFixed(4),
+              sellingRate: sellingRate.toFixed(4),
               date: date
             });
           }
