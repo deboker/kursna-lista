@@ -19,6 +19,7 @@ import otpLogo from "./assets/otp-banka-logo.svg";
 import procreditLogo from "./assets/procredit-bank-logo.svg";
 import raiffeisenLogo from "./assets/Raiffeisen-Bank-logo.svg";
 import unicreditLogo from "./assets/unicredit-bank-logo.webp";
+import yettelLogo from "./assets/yettel-bank-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -35,6 +36,7 @@ function App() {
   const [procreditBankRates, setProcreditBankRates] = useState([]);
   const [raiffeisenBankRates, setRaiffeisenBankRates] = useState([]);
   const [unicreditBankRates, setUnicreditBankRates] = useState([]);
+  const [yettelBankRates, setYettelBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -121,6 +123,11 @@ function App() {
             "/.netlify/functions/unicredit-bank",
             setUnicreditBankRates,
             "UniCredit Bank"
+          ),
+          fetchBank(
+            "/.netlify/functions/yettel-bank",
+            setYettelBankRates,
+            "Yettel Bank"
           ),
         ]);
 
@@ -468,6 +475,26 @@ function App() {
                     exchangeRates={unicreditBankRates}
                     selectedCurrency={selectedCurrency}
                   />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.yettelbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={yettelLogo}
+                        alt="Yettel Bank logo"
+                        className="bank-logo"
+                      />
+                      Yettel Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={yettelBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -493,6 +520,7 @@ function App() {
                 "ProCredit Bank": procreditBankRates,
                 "Raiffeisen Bank": raiffeisenBankRates,
                 "UniCredit Bank": unicreditBankRates,
+                "Yettel Bank": yettelBankRates,
               }}
             />
           )}
