@@ -17,6 +17,7 @@ import ersteLogo from "./assets/erte-bank-logo.svg";
 import nlbLogo from "./assets/nlb-komercialna-logo.svg";
 import otpLogo from "./assets/otp-banka-logo.svg";
 import procreditLogo from "./assets/procredit-bank-logo.svg";
+import raiffeisenLogo from "./assets/Raiffeisen-Bank-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -428,6 +429,11 @@ function App() {
                       rel="noopener noreferrer"
                       className="bank-link"
                     >
+                      <img
+                        src={raiffeisenLogo}
+                        alt="Raiffeisen Bank logo"
+                        className="bank-logo"
+                      />
                       Raiffeisen Bank
                     </a>
                   </h2>
