@@ -167,9 +167,7 @@ function App() {
       <h1>
         Kursna Lista <span className="live-text">.live</span>
       </h1>
-      <h2>
-        Uporedite devizne kurseve banaka i menjačnica u Srbiji na jednom mestu
-      </h2>
+      <h2>Uporedite devizne kurseve banaka u Srbiji na jednom mestu</h2>
 
       <div className="app-container">
         {/* Left Sidebar - Ads */}
