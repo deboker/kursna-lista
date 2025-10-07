@@ -36,15 +36,18 @@ function ExchangeRateTable({ exchangeRates, selectedCurrency, allBankRates }) {
     return matchesCurrency && hasValidRate;
   });
 
-  // Find best rates for the selected currency across all banks
+  // Find best rates for the selected currency across all banks (excluding NBS)
   const getBestRates = () => {
     if (!allBankRates || !selectedCurrency) return null;
 
     let bestBuyingRate = -Infinity;
     let bestSellingRate = Infinity;
 
-    // Go through all banks
-    Object.values(allBankRates).forEach(bankRates => {
+    // Go through all banks except "Narodna Banka Srbije"
+    Object.entries(allBankRates).forEach(([bankName, bankRates]) => {
+      // Skip NBS as it's only for reference
+      if (bankName === "Narodna Banka Srbije") return;
+
       if (Array.isArray(bankRates)) {
         bankRates.forEach(rate => {
           if (rate.currency === selectedCurrency) {
