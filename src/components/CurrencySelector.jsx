@@ -1,6 +1,6 @@
 import React from "react";
 
-function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults }) {
+function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults, loading, error }) {
   const handleCurrencyChange = (e) => {
     onCurrencyChange(e.target.value);
   };
@@ -31,8 +31,8 @@ function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults })
           <option value="RUB">RUB - Ruska rublja</option>
           <option value="TRY">TRY - Turska lira</option>
         </select>
-        <button onClick={onShowResults} className="show-results-btn">
-          Prikaži rezultat
+        <button onClick={onShowResults} className="show-results-btn" disabled={loading}>
+          {loading ? "⏳ Učitavanje..." : error ? "❌ Greška" : "Prikaži rezultat"}
         </button>
       </div>
     </div>

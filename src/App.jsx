@@ -181,12 +181,10 @@ function App() {
             selectedCurrency={selectedCurrency}
             onCurrencyChange={handleCurrencyChange}
             onShowResults={handleShowResults}
+            loading={loading}
+            error={error}
           />
-          {loading ? (
-            <p className="loading-message">⏳ Učitavanje...</p>
-          ) : error ? (
-            <p className="error-message">❌ Greška: {error}</p>
-          ) : (
+          {!loading && !error && (
             <>
               {showResults && exchangeRates.length > 0 && (
                 <>
