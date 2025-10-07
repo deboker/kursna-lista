@@ -22,9 +22,11 @@ exports.handler = async function(event, context) {
       const date = `${year}-${month}-${day}`;
 
       // Process each currency from API response
-      // Data is an array of currency pair objects
-      if (Array.isArray(data)) {
-        data.forEach((item) => {
+      // Data structure: { rates: [{ currencyList: [...] }] }
+      if (data.rates && Array.isArray(data.rates) && data.rates[0] && data.rates[0].currencyList) {
+        const currencyList = data.rates[0].currencyList;
+
+        currencyList.forEach((item) => {
           if (item.currencyPair && item.currencyPair.left && item.buyRate && item.sellRate) {
             const currency = item.currencyPair.left.code;
             const buyingRate = item.buyRate.value;
