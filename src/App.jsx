@@ -16,6 +16,7 @@ import postanskaLogo from "./assets/postanska-stedionica-logo.svg";
 import ersteLogo from "./assets/erte-bank-logo.svg";
 import nlbLogo from "./assets/nlb-komercialna-logo.svg";
 import otpLogo from "./assets/otp-banka-logo.svg";
+import procreditLogo from "./assets/procredit-bank-logo.svg";
 
 function App() {
   const [exchangeRates, setExchangeRates] = useState([]);
@@ -29,6 +30,7 @@ function App() {
   const [ersteBankRates, setErsteBankRates] = useState([]);
   const [nlbKomercijalnaRates, setNlbKomercijalnaRates] = useState([]);
   const [otpBankaRates, setOtpBankaRates] = useState([]);
+  const [procreditBankRates, setProcreditBankRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -100,6 +102,11 @@ function App() {
             "/.netlify/functions/otp-banka",
             setOtpBankaRates,
             "OTP Banka"
+          ),
+          fetchBank(
+            "/.netlify/functions/procredit-bank",
+            setProcreditBankRates,
+            "ProCredit Bank"
           ),
         ]);
 
@@ -387,6 +394,26 @@ function App() {
                     exchangeRates={otpBankaRates}
                     selectedCurrency={selectedCurrency}
                   />
+
+                  <h2 className="bank-name" style={{ marginTop: "40px" }}>
+                    <a
+                      href="https://www.procreditbank.rs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bank-link"
+                    >
+                      <img
+                        src={procreditLogo}
+                        alt="ProCredit Bank logo"
+                        className="bank-logo"
+                      />
+                      ProCredit Bank
+                    </a>
+                  </h2>
+                  <ExchangeRateTable
+                    exchangeRates={procreditBankRates}
+                    selectedCurrency={selectedCurrency}
+                  />
                 </>
               )}
             </>
@@ -409,6 +436,7 @@ function App() {
                 "Poštanska štedionica": postanskaRates,
                 "NLB Komercijalna Banka": nlbKomercijalnaRates,
                 "OTP Banka": otpBankaRates,
+                "ProCredit Bank": procreditBankRates,
               }}
             />
           )}
