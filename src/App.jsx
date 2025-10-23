@@ -170,7 +170,7 @@ function App() {
       <h2>Uporedite devizne kurseve banaka u Srbiji na jednom mestu</h2>
 
       {/* About Section */}
-      <section className="about-section">
+      <section id="about" className="about-section">
         <h3>O Kursnoj Listi</h3>
         <p>
           Kursna Lista .live vam omogućava da na jednom mestu uporedite devizne kurseve svih
@@ -802,7 +802,7 @@ function App() {
       </div>
 
       {/* FAQ Section */}
-      <section className="faq-section">
+      <section id="faq" className="faq-section">
         <h2>Često Postavljana Pitanja</h2>
         <div className="faq-container">
           <div className="faq-item">
@@ -900,7 +900,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer id="contact" className="footer">
         <div className="footer-content">
           <div className="footer-section">
             <h4>Kursna Lista .live</h4>
