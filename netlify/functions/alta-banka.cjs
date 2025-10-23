@@ -18,34 +18,54 @@ exports.handler = async function(event, context) {
     const table = $('.wpDataTable');
 
     if (table.length > 0) {
-      // Get the most recent row for each currency (first data row after header)
+      // Store all rates with dates to find the most recent
+      const ratesByDate = {};
       const rows = table.find('tbody tr');
-      const processedCurrencies = new Set();
 
       rows.each((i, row) => {
         const cells = $(row).find('td');
-        if (cells.length >= 8) {
-          const currencyCode = $(cells[1]).text().trim(); // Šifra column
+        if (cells.length >= 7) {
+          // Columns: Datum(0), Šifra(1), Valuta(2), Paritet(3), Kupovni(4), Srednji(5), Prodajni(6)
+          const dateStr = $(cells[0]).text().trim();
+          const currencyCode = $(cells[2]).text().trim(); // Valuta column (not Šifra)
 
-          // Only process each currency once (most recent rate)
-          if (!processedCurrencies.has(currencyCode) && currencyCode) {
-            processedCurrencies.add(currencyCode);
+          // Extract rates - using devize (forex) rates
+          const buyingRateText = $(cells[4]).text().trim().replace(',', '.');
+          const sellingRateText = $(cells[6]).text().trim().replace(',', '.');
 
-            // Extract rates - using devize (forex) rates
-            const buyingRate = parseFloat($(cells[4]).text().trim().replace(',', '.'));
-            const sellingRate = parseFloat($(cells[6]).text().trim().replace(',', '.'));
+          const buyingRate = parseFloat(buyingRateText);
+          const sellingRate = parseFloat(sellingRateText);
 
-            if (!isNaN(buyingRate) && !isNaN(sellingRate)) {
-              exchangeRates.push({
-                bank: "Alta Banka",
-                currency: currencyCode.toUpperCase(),
-                buyingRate: buyingRate.toFixed(4),
-                sellingRate: sellingRate.toFixed(4),
-                date: today
-              });
+          if (currencyCode && !isNaN(buyingRate) && !isNaN(sellingRate)) {
+            const key = currencyCode;
+
+            // Parse date to find most recent
+            const dateParts = dateStr.split(' ')[0].split('/');
+            if (dateParts.length === 3) {
+              const dateValue = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+
+              if (!ratesByDate[key] || dateValue > ratesByDate[key].date) {
+                ratesByDate[key] = {
+                  date: dateValue,
+                  currency: currencyCode.toUpperCase(),
+                  buyingRate: buyingRate.toFixed(4),
+                  sellingRate: sellingRate.toFixed(4)
+                };
+              }
             }
           }
         }
+      });
+
+      // Convert to array
+      Object.values(ratesByDate).forEach(rate => {
+        exchangeRates.push({
+          bank: "Alta Banka",
+          currency: rate.currency,
+          buyingRate: rate.buyingRate,
+          sellingRate: rate.sellingRate,
+          date: today
+        });
       });
     }
 
