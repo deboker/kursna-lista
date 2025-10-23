@@ -169,12 +169,22 @@ function App() {
       </h1>
       <h2>Uporedite devizne kurseve banaka u Srbiji na jednom mestu</h2>
 
-      <div className="app-container">
-        {/* Left Sidebar - Ads */}
-        <div className="left-sidebar">
-          <h3>Reklamni prostor</h3>
-        </div>
+      {/* About Section */}
+      <section className="about-section">
+        <h3>O Kursnoj Listi</h3>
+        <p>
+          Kursna Lista .live vam omogućava da na jednom mestu uporedite devizne kurseve svih
+          vodećih banaka u Srbiji. Naša platforma ažurira kurseve u realnom vremenu kako biste
+          uvek imali najnovije informacije o cenama valuta.
+        </p>
+        <p>
+          Bez obzira da li planirate putovanje, međunarodnu transakciju ili jednostavno želite
+          da pratite tržište valuta, naša aplikacija vam pruža transparentne i tačne podatke
+          za donošenje najboljih finansijskih odluka.
+        </p>
+      </section>
 
+      <div className="app-container">
         {/* Main Content */}
         <div className="main-content">
           <CurrencySelector
@@ -188,6 +198,16 @@ function App() {
             <>
               {showResults && exchangeRates.length > 0 && (
                 <>
+                  {/* Introduction */}
+                  <div className="content-intro">
+                    <h3>Uporedite Kurseve Svih Banaka</h3>
+                    <p>
+                      Ispod možete videti devizne kurseve za sve banke u Srbiji. Kursevi se
+                      prikazuju za srednji, kupovni i prodajni kurs. Zeleno označeni kursevi
+                      pokazuju najbolje opcije za kupovinu ili prodaju valute.
+                    </p>
+                  </div>
+
                   {exchangeRates[0].date && (
                     <p className="exchange-date">
                       Datum:{" "}
@@ -780,6 +800,147 @@ function App() {
           )}
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <section className="faq-section">
+        <h2>Često Postavljana Pitanja</h2>
+        <div className="faq-container">
+          <div className="faq-item">
+            <h4>Kada se ažuriraju kursevi?</h4>
+            <p>
+              Kursevi se ažuriraju svakodnevno prema zvaničnim kursnim listama banaka. Narodna
+              Banka Srbije objavljuje svoj kurs radnim danima do 15 časova, dok komercijalne
+              banke mogu ažurirati svoje kurseve više puta dnevno.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Šta je razlika između srednjeg, kupovnog i prodajnog kursa?</h4>
+            <p>
+              <strong>Srednji kurs</strong> je referentni kurs koji objavljuje Narodna Banka
+              Srbije. <strong>Kupovni kurs</strong> je kurs po kome banka kupuje devize od vas.
+              <strong>Prodajni kurs</strong> je kurs po kome banka prodaje devize vama. Razlika
+              između kupovnog i prodajnog kursa je marža banke.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Kako da odaberem najbolju banku za menjanje valute?</h4>
+            <p>
+              Ako prodajete devize (npr. EUR) i želite dinare, tražite <strong>najviši kupovni
+              kurs</strong>. Ako kupujete devize (npr. EUR) sa dinarima, tražite <strong>najniži
+              prodajni kurs</strong>. Zeleno označeni kursevi u tabelama označavaju najbolje opcije.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Da li su kursevi isti u svim filijama banke?</h4>
+            <p>
+              Generalno da, ali neke banke mogu imati drugačije kurseve na šalterima ili u
+              menjačnicama. Uvek proverite kurs na licu mesta pre transakcije ili koristite
+              online kanale gde je kurs zagarantovan.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Koje valute mogu da menjam u Srbiji?</h4>
+            <p>
+              Većina banaka nudi razmenu najčešćih svetskih valuta: EUR, USD, CHF, GBP. Neke
+              banke takođe nude i druge valute kao što su AUD, CAD, DKK, SEK, NOK, RUB, JPY,
+              itd. Dostupnost zavisi od banke.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Da li mogu da menjam novac bez da imam račun u banci?</h4>
+            <p>
+              Da, sve banke u Srbiji omogućavaju menjanje valute bez potrebe da budete klijent
+              te banke. Potrebna vam je samo lična karta ili pasoš.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Educational Content */}
+      <section className="education-section">
+        <h2>Kako Funkcionišu Devizni Kursevi?</h2>
+        <div className="education-content">
+          <div className="education-item">
+            <h4>Šta Utiče na Devizne Kurseve?</h4>
+            <p>
+              Devizni kursevi se menjaju pod uticajem različitih faktora: ekonomska situacija
+              u zemlji, kamatne stope, inflacija, politička stabilnost, trgovinski bilans i
+              globalni ekonomski trendovi. Narodna Banka Srbije prati sve ove faktore kako bi
+              održala stabilnost dinara.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Uloga Narodne Banke Srbije</h4>
+            <p>
+              Narodna Banka Srbije objavljuje zvanični srednji kurs dinara prema drugim valutama.
+              Ovaj kurs služi kao referenca za komercijalne banke koje na osnovu njega formiraju
+              svoje kupovne i prodajne kurseve. NBS može intervenisati na deviznom tržištu kako
+              bi stabilizovala kurs dinara.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Kada Je Najbolje Vreme za Menjanje Valute?</h4>
+            <p>
+              Ne postoji univerzalni odgovor, ali evo nekoliko saveta: pratite trendove tokom
+              nekoliko dana ili nedelja, izbegavajte menjanje na aerodromima (često imaju lošije
+              kurseve), razmislite o korišćenju online bankarstva gde su kursevi često povoljniji,
+              i vodite računa o provizijama koje mogu značajno uticati na konačan iznos.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Saveti za Štednju Pri Menjanju Valute</h4>
+            <p>
+              Uporedite kurseve nekoliko banaka pre nego što odlučite gde da menjate, izbegavajte
+              hitne transakcije kada nemate vremena da tražite najbolju ponudu, menjajte veće
+              iznose odjednom jer neki kursevi imaju minimalnu proviziju, i pazite na skrivene
+              troškove - ponekad "bez provizije" zapravo znači lošiji kurs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h4>Kursna Lista .live</h4>
+            <p>
+              Vaš pouzdan partner za uporedbu deviznih kurseva svih banaka u Srbiji.
+              Precizno, transparentno, ažurno.
+            </p>
+          </div>
+          <div className="footer-section">
+            <h4>Informacije</h4>
+            <ul>
+              <li><a href="#about">O nama</a></li>
+              <li><a href="#faq">Često pitanja</a></li>
+              <li><a href="#contact">Kontakt</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Pravne Informacije</h4>
+            <ul>
+              <li><a href="#privacy">Politika privatnosti</a></li>
+              <li><a href="#terms">Uslovi korišćenja</a></li>
+              <li><a href="#disclaimer">Odricanje odgovornosti</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Izvori Podataka</h4>
+            <p>
+              Podaci o kursevima se preuzimaju direktno sa zvaničnih veb sajtova Narodne
+              Banke Srbije i komercijalnih banaka.
+            </p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 Kursna Lista .live. Sva prava zadržana.</p>
+          <p className="disclaimer-text">
+            Napomena: Kursevi su informativnog karaktera. Uvek proverite zvanične kurseve na
+            licu mesta ili na veb sajtu banke pre obavljanja transakcije.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
