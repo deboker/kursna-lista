@@ -899,6 +899,50 @@ function App() {
         </div>
       </section>
 
+      {/* AdSense Policy Compliance Section */}
+      <section id="adsense-policy" className="education-section">
+        <h2>Kvalitet Sadržaja i Transparentnost</h2>
+        <div className="education-content">
+          <div className="education-item">
+            <h4>Naš Pristup Kvalitetnom Sadržaju</h4>
+            <p>
+              Kursna Lista .live je posvećena pružanju vrednog i upotrebljivog sadržaja svim
+              korisnicima. Naša platforma nudi detaljne informacije o deviznim kursevima,
+              edukativne članke o funkcionisanju valutnog tržišta, kao i praktične savete
+              za najbolje korišćenje bankarskih usluga u Srbiji.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Zašto Koristimo Oglase?</h4>
+            <p>
+              Oglasi nam omogućavaju da održavamo besplatnu uslugu uporedbe kurseva za sve
+              korisnike. Trudimo se da oglasi budu relevantni i da ne ometaju vaše
+              korisničko iskustvo. Sve oglase na našoj platformi upravlja Google AdSense,
+              što garantuje sigurnost i kvalitet oglašavanja.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Kvalitet i Originalnost Sadržaja</h4>
+            <p>
+              Sav sadržaj na Kursna Lista .live je originalan i pisan sa ciljem da pruži
+              korisnicima praktične informacije o deviznom tržištu u Srbiji. Naši podaci
+              se preuzimaju direktno sa zvaničnih izvora (Narodna Banka Srbije i komercijalne
+              banke), a edukativni sadržaj je kreiran sa ciljem da korisnicima pomogne da
+              donose informisane finansijske odluke.
+            </p>
+          </div>
+          <div className="education-item">
+            <h4>Kontinuirano Unapređenje</h4>
+            <p>
+              Redovno radimo na unapređenju sadržaja i funkcionalnosti naše platforme.
+              Slušamo povratne informacije korisnika i trudimo se da ponudimo najbolje
+              moguće iskustvo pri uporedbi deviznih kurseva. Ako imate predloge ili pitanja,
+              slobodno nas kontaktirajte.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer id="contact" className="footer">
         <div className="footer-content">
