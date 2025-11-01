@@ -4,6 +4,7 @@ import axios from "axios";
 import CurrencySelector from "./components/CurrencySelector";
 import ExchangeRateTable from "./components/ExchangeRateTable";
 import CurrencyConverter from "./components/CurrencyConverter";
+import CookieConsent from "./components/CookieConsent";
 import "./index.css";
 import backgroundImage from "./assets/7405151_3647208.jpg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
@@ -986,6 +987,9 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Cookie Consent Popup */}
+      <CookieConsent />
     </div>
   );
 }
