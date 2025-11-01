@@ -1,5 +1,9 @@
 /* App.css */
 /* Add this to your existing or a new CSS file */
+#root {
+  background-color: #14141ef2;
+}
+
 .background-overlay {
   position: fixed;
   top: 0;
@@ -77,13 +81,14 @@ h1 {
 
 .live-text {
   animation: live-pulse 2s ease-in-out infinite;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   font-style: italic;
 }
 
 @keyframes live-pulse {
-  0%, 100% {
+  0%,
+  100% {
     color: white;
   }
   50% {
