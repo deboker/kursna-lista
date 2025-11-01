@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import CurrencySelector from "./components/CurrencySelector";
 import ExchangeRateTable from "./components/ExchangeRateTable";
@@ -958,15 +959,15 @@ function App() {
             <ul>
               <li><a href="#about">O nama</a></li>
               <li><a href="#faq">Često pitanja</a></li>
-              <li><a href="#contact">Kontakt</a></li>
+              <li><Link to="/kontakt">Kontakt</Link></li>
             </ul>
           </div>
           <div className="footer-section">
             <h4>Pravne Informacije</h4>
             <ul>
-              <li><a href="#privacy">Politika privatnosti</a></li>
-              <li><a href="#terms">Uslovi korišćenja</a></li>
-              <li><a href="#disclaimer">Odricanje odgovornosti</a></li>
+              <li><Link to="/politika-privatnosti">Politika privatnosti</Link></li>
+              <li><Link to="/uslovi-koriscenja">Uslovi korišćenja</Link></li>
+              <li><Link to="/odricanje-odgovornosti">Odricanje odgovornosti</Link></li>
             </ul>
           </div>
           <div className="footer-section">
