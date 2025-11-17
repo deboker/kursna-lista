@@ -779,7 +779,7 @@ function App() {
 
         {/* Right Sidebar - Calculator */}
         <div className="right-sidebar">
-          {exchangeRates.length > 0 && (
+          {showResults && exchangeRates.length > 0 && (
             <CurrencyConverter
               allBankRates={{
                 "Narodna Banka Srbije": exchangeRates,
