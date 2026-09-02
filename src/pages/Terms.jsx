@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
 
@@ -78,7 +78,7 @@ function Terms() {
 
           <h2>7. Odricanje Odgovornosti</h2>
           <p>
-            Kursna Lista .live se pruža "kakva jeste" i "kako je dostupna", bez ikakvih garancija,
+            Kursna Lista .live se pruža &quot;kakva jeste&quot; i &quot;kako je dostupna&quot;, bez ikakvih garancija,
             eksplicitnih ili implicitnih. Ne garantujemo da će:
           </p>
           <ul>

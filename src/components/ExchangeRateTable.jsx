@@ -1,5 +1,3 @@
-import React from "react";
-
 const currencyNames = {
   EUR: "Euro",
   USD: "Američki dolar",

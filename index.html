@@ -86,16 +86,30 @@
       content="Kursna Lista - Uporedi devizne kurseve banaka u Srbiji"
     />
 
+    <!-- Google Consent Mode: deny optional storage until the visitor chooses. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      var storedConsent = localStorage.getItem("cookieConsent");
+      var consentGranted = storedConsent === "accepted";
+      gtag("consent", "default", {
+        analytics_storage: consentGranted ? "granted" : "denied",
+        ad_storage: consentGranted ? "granted" : "denied",
+        ad_user_data: consentGranted ? "granted" : "denied",
+        ad_personalization: consentGranted ? "granted" : "denied",
+        wait_for_update: 500,
+      });
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-8VVQ2NHE05"
     ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
       gtag("js", new Date());
 
       gtag("config", "G-8VVQ2NHE05");

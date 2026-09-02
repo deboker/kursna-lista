@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
 
@@ -20,7 +20,7 @@ function Privacy() {
 
           <h2>1. Uvod</h2>
           <p>
-            Kursna Lista .live ("mi", "nas", "naša") poštuje privatnost svojih korisnika i posvećen
+            Kursna Lista .live (&quot;mi&quot;, &quot;nas&quot;, &quot;naša&quot;) poštuje privatnost svojih korisnika i posvećen
             je zaštiti ličnih podataka. Ova Politika privatnosti objašnjava kako prikupljamo,
             koristimo, čuvamo i delimo informacije kada koristite našu web stranicu.
           </p>

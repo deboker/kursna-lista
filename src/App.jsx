@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CurrencySelector from "./components/CurrencySelector";
@@ -7,6 +7,7 @@ import CurrencyConverter from "./components/CurrencyConverter";
 import CookieConsent from "./components/CookieConsent";
 import "./index.css";
 import backgroundImage from "./assets/7405151_3647208.jpg";
+import exchangeIcon from "./assets/exchange.svg";
 import nbsLogo from "./assets/narodna-banka-logo.svg";
 import aikLogo from "./assets/aik-banka-logo.png";
 import intesaLogo from "./assets/BANCA_INTESA_White-logo.webp";
@@ -166,6 +167,12 @@ function App() {
         ></div>
         <div className="background-gradient"></div>
       </div>
+      <header className="site-header">
+        <div className="brand">
+          <img src={exchangeIcon} alt="Kursna Lista logo" className="brand-icon" />
+          <span className="brand-name">Kursna Lista .live</span>
+        </div>
+      </header>
       <h1>
         Kursna Lista <span className="live-text">.live</span>
       </h1>
@@ -895,7 +902,7 @@ function App() {
               Uporedite kurseve nekoliko banaka pre nego što odlučite gde da menjate, izbegavajte
               hitne transakcije kada nemate vremena da tražite najbolju ponudu, menjajte veće
               iznose odjednom jer neki kursevi imaju minimalnu proviziju, i pazite na skrivene
-              troškove - ponekad "bez provizije" zapravo znači lošiji kurs.
+              troškove - ponekad &quot;bez provizije&quot; zapravo znači lošiji kurs.
             </p>
           </div>
         </div>

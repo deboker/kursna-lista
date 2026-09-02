@@ -1,5 +1,3 @@
-import React from "react";
-
 function CurrencySelector({ selectedCurrency, onCurrencyChange, onShowResults, loading, error }) {
   const handleCurrencyChange = (e) => {
     onCurrencyChange(e.target.value);
